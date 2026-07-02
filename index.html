@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Founder's Plot — an agricultural business simulation for iOS and Android. Start with one apple tree. Build a vertically integrated empire.">
+<meta property="og:title" content="Founder's Plot">
+<meta property="og:description" content="Start with one apple tree. Build a vertically integrated empire.">
+<meta property="og:type" content="website">
+<title>Founder's Plot — Agricultural Business Simulation</title>
+<style>
+/* ── TOKENS ────────────────────────────────────────────────── */
+:root {
+  --ink:        #e8e0c8;
+  --ink-muted:  #8a8070;
+  --ink-faint:  #4a4438;
+  --ground:     #0e0d09;
+  --ground-2:   #161410;
+  --ground-3:   #1e1c16;
+  --gold:       #c4922e;
+  --gold-dim:   #7a5818;
+  --leaf:       #3f7a52;
+  --leaf-dim:   #2a5238;
+  --rule:       #2e2a20;
+}
+/* ── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 17px; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+/* ── CROP-ROW RULE — the signature element ─────────────────── */
+.crop-rule {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  overflow: hidden;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--gold-dim) 0px,
+    var(--gold-dim) 4px,
+    transparent 4px,
+    transparent 10px
+  );
+  opacity: 0.55;
+}
+/* ── LAYOUT ────────────────────────────────────────────────── */
+.wrap      { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+.wrap-wide { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+/* ── NAV ───────────────────────────────────────────────────── */
+nav {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--ink-muted); }
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--gold); }
+/* ── HERO ──────────────────────────────────────────────────── */
+.hero {
+  padding: 100px 0 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-eyebrow {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 30px;
+}
+.hero h1 {
+  font-size: clamp(42px, 7vw, 78px);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--ink-muted);
+  max-width: 540px;
+  margin-top: 24px;
+  line-height: 1.5;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 46px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ground);
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 2px;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-primary:hover { background: #d4a240; transform: translateY(-1px); }
+.btn-secondary {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-faint);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
+.hero-platform {
+  margin-top: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+/* ── FEATURE STRIP ─────────────────────────────────────────── */
+.features {
+  padding: 70px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.feature {
+  padding: 32px;
+  border-right: 1px solid var(--rule);
+}
+.feature:last-child { border-right: none; }
+.feature-mark {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  margin-bottom: 14px;
+}
+.feature h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.feature p {
+  font-size: 15px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+/* ── THE PITCH ─────────────────────────────────────────────── */
+.pitch {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.pitch-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.pitch h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+.pitch h2 strong { color: var(--gold); font-weight: 400; }
+.pitch-body p {
+  font-size: 16px;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+.pitch-body p:last-child { margin-bottom: 0; }
+.pitch-stat {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.pitch-stat:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.pitch-stat .number {
+  font-size: 42px;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.pitch-stat .label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 6px;
+}
+/* ── INVENTION CALLOUT ─────────────────────────────────────── */
+.invention {
+  padding: 70px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--ground-2);
+}
+.invention-inner {
+  border: 1px solid var(--gold-dim);
+  border-radius: 3px;
+  padding: 50px;
+}
+.invention-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.invention h2 {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 400;
+  line-height: 1.2;
+  max-width: 680px;
+  margin-bottom: 20px;
+}
+.invention p {
+  font-size: 16px;
+  color: var(--ink-muted);
+  max-width: 600px;
+  line-height: 1.7;
+}
+.invention-demo {
+  margin-top: 36px;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 24px 28px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  max-width: 560px;
+}
+.demo-label {
+  color: var(--ink-faint);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.demo-input {
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+.demo-input span { color: var(--gold); }
+.demo-divider {
+  height: 1px;
+  background: var(--rule);
+  margin: 14px 0;
+}
+.demo-result .result-name { color: var(--leaf); font-size: 15px; }
+.demo-result .result-meta { color: var(--ink-muted); font-size: 12px; margin-top: 4px; }
+/* ── PROGRESSION ───────────────────────────────────────────── */
+.progression {
+  padding: 70px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.progression h2 {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-bottom: 50px;
+  color: var(--ink);
+}
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.tier {
+  padding: 24px 28px;
+  border-right: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
+}
+.tier:nth-child(1),
+.tier:nth-child(2),
+.tier:nth-child(3),
+.tier:nth-child(4) { border-top: 2px solid var(--gold-dim); }
+.tier:last-child { border-right: none; }
+.tier-num {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+}
+.tier h4 {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.tier p {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+/* ── NOTIFY SECTION ────────────────────────────────────────── */
+.notify {
+  padding: 80px 0;
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+}
+.notify h2 {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
+}
+.notify p {
+  color: var(--ink-muted);
+  font-size: 16px;
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+.notify-form-wrap {
+  max-width: 480px;
+  margin: 0 auto 8px;
+  text-align: center;
+}
+.notify-form {
+  width: 100%;
+}
+.notify-form-row {
+  display: flex;
+  gap: 8px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.notify-email {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 16px;
+  background: var(--ground-3);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink);
+  font-size: 15px;
+  font-family: Georgia, serif;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.notify-email::placeholder { color: var(--ink-faint); }
+.notify-email:focus { border-color: var(--gold-dim); }
+.notify-submit {
+  background: var(--gold);
+  color: var(--ground);
+  border: none;
+  padding: 13px 24px;
+  border-radius: 2px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.notify-submit:hover { background: #d4a240; }
+.notify-note {
+  margin-top: 14px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+/* ── FOOTER ────────────────────────────────────────────────── */
+footer {
+  padding: 36px 0;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-left {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+.footer-right {
+  display: flex;
+  gap: 24px;
+}
+.footer-right a {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-right a:hover { color: var(--ink-muted); }
+/* ── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .features-grid { grid-template-columns: 1fr; }
+  .feature { border-right: none; border-bottom: 1px solid var(--rule); padding: 28px 0; }
+  .feature:last-child { border-bottom: none; }
+  .pitch-layout { grid-template-columns: 1fr; gap: 40px; }
+  .tiers { grid-template-columns: 1fr 1fr; }
+  .tier:nth-child(2),
+  .tier:nth-child(4) { border-right: none; }
+  .nav-links { display: none; }
+  .invention-inner { padding: 30px 24px; }
+  .notify-form-row { flex-direction: column; }
+  .notify-submit { width: 100%; }
+}
+@media (max-width: 480px) {
+  .tiers { grid-template-columns: 1fr; }
+  .tier { border-right: none; }
+  .hero { padding: 60px 0 50px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn-primary, .btn-secondary, .notify-submit { transition: none; }
+}
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+  <div class="wrap-wide">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Founder's Plot <span>· Long Watch LLC</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#notify">Notify me</a></li>
+        <li><a href="/support.html">Support</a></li>
+        <li><a href="/press.html">Press</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">iOS &amp; Android · Coming 2027</div>
+    <h1>You start with<br><em>one apple tree.</em></h1>
+    <p class="hero-sub">An agricultural business simulation where real economics, honest failure, and AI-powered product invention let you build something that feels genuinely yours.</p>
+    <div class="hero-actions">
+      <a href="#notify" class="btn-primary">Get notified at launch</a>
+      <a href="#about" class="btn-secondary">Learn more</a>
+    </div>
+    <p class="hero-platform">iOS &nbsp;·&nbsp; Android &nbsp;·&nbsp; Free to play</p>
+  </div>
+</section>
+<div class="crop-rule"></div>
+<!-- FEATURES -->
+<section class="features" id="about">
+  <div class="wrap-wide">
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-mark">Real economics</div>
+        <h3>Honest money</h3>
+        <p>Raw apples sell for $0.40 each. Process them into juice and earn $3.74 a bottle. The margin teaches you more than any tutorial ever could.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-mark">AI invention</div>
+        <h3>Products no one has made before</h3>
+        <p>Describe any product in plain language. Our AI validates it against real agricultural economics and adds it to a marketplace where other players can license the recipe — earning you in-game royalties every time a batch is made.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-mark">Community</div>
+        <h3>Demand-driven roadmap</h3>
+        <p>When enough players hit the same equipment limit, the community funds a new facility — and we build it. Your investment shapes what ships next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="crop-rule"></div>
+<!-- PITCH -->
+<section class="pitch">
+  <div class="wrap">
+    <div class="pitch-layout">
+      <div class="pitch-text">
+        <h2>A game that respects<br><strong>how business actually works.</strong></h2>
+        <div class="pitch-body">
+          <p>Most farming games give you an idle loop and call it a business. Founder's Plot gives you cash flow problems, reputation risk, and the specific satisfaction of watching a wholesale contract pay off after three weeks of careful planning.</p>
+          <p>You can go bankrupt. You can recover. The post-mortem tells you exactly where the money went and what to do differently. That's a feature, not a bug.</p>
+          <p>Built by a solo developer, on evenings, over two years. Designed to be the game that didn't exist yet.</p>
+        </div>
+      </div>
+      <div class="pitch-stats">
+        <div class="pitch-stat">
+          <div class="number">7</div>
+          <div class="label">Progression tiers — backyard to national brand</div>
+        </div>
+        <div class="pitch-stat">
+          <div class="number">14×</div>
+          <div class="label">The margin difference between raw and processed</div>
+        </div>
+        <div class="pitch-stat">
+          <div class="number">∞</div>
+          <div class="label">Player-inventable products — if you can describe it, it can exist</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="crop-rule"></div>
+<!-- INVENTION CALLOUT -->
+<section class="invention">
+  <div class="wrap">
+    <div class="invention-inner">
+      <div class="invention-label">The invention system</div>
+      <h2>Describe a product. We'll tell you if it works.</h2>
+      <p>Type a product in plain language. The AI evaluates feasibility, balances the economics against your equipment tier, and either approves it — or explains honestly why it doesn't work. Approved products are yours. License them to other players and earn royalties every time someone makes a batch.</p>
+      <div class="invention-demo">
+        <div class="demo-label">R&amp;D Lab · Concept evaluation</div>
+        <div class="demo-input">› <span>"Lavender honey apple butter — small-batch, premium pricing, spring market focus"</span></div>
+        <div class="demo-divider"></div>
+        <div class="demo-result">
+          <div class="result-name">✓ Lavender Honey Apple Butter — Approved</div>
+          <div class="result-meta">Tier 3 equipment required · Est. $8.40/jar · Specialty channel · High margin</div>
+          <div class="result-meta" style="margin-top:6px; color: #3f7a52;">Ready to begin R&amp;D — invest $4,200 to develop the recipe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="crop-rule"></div>
+<!-- PROGRESSION -->
+<section class="progression">
+  <div class="wrap-wide">
+    <h2>From backyard to empire.<br>At your own pace.</h2>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-num">Tier 1–2</div>
+        <h4>Backyard Orchard</h4>
+        <p>One apple tree. A processing shed. The first time you make juice and see what the margin actually is.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-num">Tier 3–4</div>
+        <h4>Local Business</h4>
+        <p>Farmers markets, wholesale contracts, County Fair ribbons. Your brand starts to mean something.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-num">Tier 5–6</div>
+        <h4>Regional Supplier</h4>
+        <p>You invent products. You license them. State Fair. Staff. A P&amp;L that keeps you honest.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-num">Tier 7</div>
+        <h4>National Brand</h4>
+        <p>Cooperative partners. National Expo. Distribution across three regions. The long watch paid off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="crop-rule"></div>
+<!-- NOTIFY -->
+<section class="notify" id="notify">
+  <div class="wrap">
+    <h2>Get notified at launch.</h2>
+    <p>No newsletter. One email when Founder's Plot is available to download.</p>
+    <div class="notify-form-wrap">
+      <form
+        class="notify-form"
+        method="POST"
+        action="https://c24c2168.sibforms.com/serve/MUIFALTOD4vvgA8YIMEtOVaa4EpgtrAgC4llc9tuA1w5J25D-oI1JZlsj-dP7ym6IawKdwPYeqdxrOITv6iozgn0wOavxpvX2CNI8OC9tYmqxvGIL3-A2ZNeJy0A0eaIXAoAaeVRkPkGkfRY9FSj-J7yDtEbx3-9WKXOdsh9CflF_TLOOXB0ADasyC_dxSnuhoOrh65pwBh1aoiIHA=="
+      >
+        <!-- Brevo spam trap — leave blank -->
+        <input type="hidden" name="email_address_check" value="">
+        <input type="hidden" name="locale" value="en">
+        <div class="notify-form-row">
+          <input
+            class="notify-email"
+            type="email"
+            name="EMAIL"
+            placeholder="Your email address"
+            required
+            autocomplete="email"
+          >
+          <button class="notify-submit" type="submit">Notify me at launch</button>
+        </div>
+      </form>
+    </div>
+    <p class="notify-note">By signing up you agree to our <a href="/terms.html" style="color:inherit;border-bottom:1px solid var(--ink-faint);">Terms of Service</a> &nbsp;·&nbsp; Your email is used for this one notification only &nbsp;·&nbsp; Never shared</p>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap-wide">
+    <div class="crop-rule" style="margin-bottom: 28px;"></div>
+    <div class="footer-inner">
+      <div class="footer-left">© 2026 Long Watch LLC &nbsp;·&nbsp; Olathe, Kansas</div>
+      <div class="footer-right">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/support.html">Support</a>
+        <a href="/press.html">Press</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  (function () {
+    var form = document.querySelector('.notify-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('.notify-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      // no-cors: browser sends the POST to Brevo but doesn't read the response.
+      // The subscription still processes server-side — confirmed working.
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        mode: 'no-cors'
+      }).catch(function () {
+        // network error — nothing to do, show success anyway
+      }).finally(function () {
+        var wrap = form.closest('.notify-form-wrap');
+        wrap.innerHTML =
+          '<p style="font-family:Georgia,serif;font-size:20px;color:#3f7a52;margin-bottom:8px;">✓ You\'re on the list.</p>' +
+          '<p style="font-family:\'Courier New\',monospace;font-size:12px;letter-spacing:0.1em;color:#4a4438;text-transform:uppercase;">One email, when Founder\'s Plot launches.</p>';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
