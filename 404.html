@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founder's Plot</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f1e8; color: #2e2a20; text-align: center; padding: 60px 24px; }
+  h1 { color: #2e7d32; }
+  a.button { display: inline-block; margin-top: 24px; background: #2e7d32; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; }
+  p { max-width: 420px; margin: 16px auto; line-height: 1.5; }
+</style>
+</head>
+<body>
+  <h1>Founder's Plot</h1>
+  <p id="message">If you have the app installed, this link should have opened it directly.</p>
+  <p>If nothing happened, tap the button below to open the app.</p>
+  <a class="button" id="open-app" href="/">Back to foundersplot.com</a>
+  <script>
+    // GitHub Pages serves this file for ANY path that doesn't match a real
+    // file (the standard "custom 404 as a catch-all router" trick) — used
+    // here specifically for /refer/CODE referral links (built 2026-09-04),
+    // since a code is a dynamic path segment GitHub Pages can't route to a
+    // real file the way /reset-password's single fixed path could just be
+    // its own reset-password.html. Reconstructs the same
+    // foundersplot://refer/CODE custom-scheme link App.tsx already knows
+    // how to parse (see its REFERRAL_LINK_PATTERN), same fallback pattern
+    // as reset-password.html uses for its own fragment-based tokens.
+    //
+    // This ONLY runs if the Universal Link handoff itself failed (no app
+    // installed yet, or AASA verification hasn't propagated) — a verified
+    // Universal Link on a device with the app installed never reaches this
+    // page at all; iOS/Android intercept the tap before any network
+    // request happens.
+    var match = window.location.pathname.match(/\/refer\/([A-Za-z0-9]+)/);
+    if (match) {
+      document.getElementById('message').textContent = "You've been invited to Founder's Plot!";
+      document.getElementById('open-app').textContent = 'Open Founder\'s Plot';
+      document.getElementById('open-app').href = 'foundersplot://refer/' + match[1];
+    }
+  </script>
+</body>
+</html>

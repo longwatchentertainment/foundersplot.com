@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "Q2G8RJT3LG.com.longwatch.foundersplot",
-        "paths": ["/reset-password", "/reset-password/*"]
+        "paths": ["/reset-password", "/reset-password/*", "/refer/*"]
       }
     ]
   }
