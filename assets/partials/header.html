@@ -1,22 +1,18 @@
-<!--
-  CANONICAL SHARED HEADER -- documentation copy only, not included at
-  runtime (this is a plain static GitHub Pages site with no build step /
-  templating engine, so there's no server-side include mechanism to pull
-  this into each page automatically). Every real page inlines an
-  IDENTICAL copy of this exact markup, right after <body>. If you change
-  the header, update this file first, then copy the change into every
-  page: index.html, support.html, privacy.html, terms.html, press.html.
--->
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
-    <nav aria-label="Main navigation">
-      <a href="/#about">The game</a>
-      <a href="/#journey">Your journey</a>
-      <a href="/support.html">Support</a>
-      <a href="/press.html">Press</a>
-    </nav>
-    <a class="button small gold" href="/#notify">Notify me</a>
-  </div>
+<!-- CANONICAL SHARED HEADER -- documentation only, NOT included at runtime.
+     GitHub Pages serves this repo as plain static files with no build or
+     include step (.nojekyll), so every page inlines a byte-identical copy of
+     the markup below. If the header changes, change it here AND in every
+     page. Styling comes from assets/css/style.css (bare header/nav/wordmark
+     selectors), which refinements.css imports. -->
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#notify">Notify me</a>
 </header>

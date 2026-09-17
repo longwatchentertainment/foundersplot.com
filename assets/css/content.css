@@ -1,77 +1,125 @@
-/* support.html / privacy.html / terms.html / press.html -- restrained,
-   readable informational-page layout. No hero art, no full-bleed images --
-   cream background, dark text, clear headings, per the "these don't each
-   need a giant orchard hero" brief. Extends site.css. */
+/* support.html / privacy.html / terms.html / press.html
 
+   Restrained informational-page layer on top of the supplied design-preview
+   CSS (style.css, imported by refinements.css). The preview is a marketing
+   page: its display scale runs h1 up to 5.6rem and h2 up to 4.5rem, which is
+   right for a hero and wrong for a privacy policy. So this file deliberately
+   pulls the type back down for reading, keeps the cream background and dark
+   text, and skips the orchard artwork entirely -- per the brief that these
+   pages stay readable and "don't each need a giant orchard hero".
+
+   The header, footer, buttons, colors and fonts still come straight from
+   style.css, so these pages stay visually of a piece with the front page. */
+
+/* Extra tokens. style.css defines --forest/--ink/--paper/--gold/--serif;
+   these are the additional reading-page values used below. */
+:root{
+  --ink-muted:#5a685a;
+  --ink-faint:#8d9186;
+  --paper-dim:#e9e0cb;
+  --paper-card:#f8f1dc;
+  --gold-dim:#a98537;
+  --gold-deep:#8d713b;
+  --rule:#bda97844;
+  --sans:'DM Sans',Arial,sans-serif;
+}
+
+/* -- PAGE HEADER ------------------------------------------------- */
 .page-header{padding:56px 5% 44px;background:var(--paper-dim);border-bottom:1px solid var(--rule)}
-.page-header-inner{max-width:760px;margin:0 auto}
-.page-header h1{font-size:clamp(2.1rem,4vw,2.9rem);margin-bottom:14px}
+.page-header-inner{max-width:780px;margin:0 auto}
+.page-header h1{font-size:clamp(2.4rem,4.4vw,3.4rem);letter-spacing:-.5px;line-height:1.05;margin-bottom:14px}
 .page-header .updated,.page-header p{color:var(--ink-muted);font-size:15px}
+.page-header .eyebrow{margin-bottom:14px}
 
-.content{padding:56px 5% 70px}
-.content-inner{max-width:760px;margin:0 auto}
-.content-inner-wide{max-width:900px;margin:0 auto}
+.content{padding:56px 5% 72px}
+.content-inner{max-width:780px;margin:0 auto}
+.content-inner-wide{max-width:920px;margin:0 auto}
 
-/* Contact / CTA card */
+/* -- READING TYPE SCALE ------------------------------------------
+   Overrides style.css's marketing-sized headings for long-form reading.
+   Scoped to these page wrappers so the front page is untouched. */
+.content h2,.page-header h2{font-size:1.75rem;line-height:1.2}
+.content h3{font-size:1.2rem;font-family:var(--sans);font-weight:700;line-height:1.35}
+.content p{font-size:15.5px;color:var(--ink-muted);line-height:1.75}
+.content a{color:var(--forest);border-bottom:1px solid var(--gold-dim)}
+.content a:hover{color:var(--ink)}
+
+/* -- CARD (contact / press blocks) --------------------------------- */
 .card{
   background:var(--paper-card);border:1px solid var(--gold-dim);border-radius:6px;
-  padding:34px 38px;margin-bottom:48px;
+  padding:34px 38px;margin-bottom:44px;
 }
-.card h2{font-size:1.4rem;margin-bottom:12px}
-.card p{color:var(--ink-muted);margin-bottom:18px}
-.card .response-note{margin-top:14px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-faint)}
+.card h2{font-size:1.5rem;margin-bottom:12px}
+.card p{margin-bottom:18px}
+.card .button{margin-top:4px}
+.card .response-note{margin-top:16px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-faint)}
 
-/* FAQ */
-.faq-heading{font-size:1.6rem;margin-bottom:28px}
+/* -- FAQ ----------------------------------------------------------- */
+.faq-heading{font-size:1.9rem;margin-bottom:24px}
 .faq-item{padding:24px 0;border-bottom:1px solid var(--rule)}
 .faq-item:last-child{border-bottom:none}
 .faq-q{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.4;font-family:var(--sans)}
 .faq-a{font-size:15px;color:var(--ink-muted);line-height:1.7}
-.faq-a a{color:var(--forest);text-decoration:none;border-bottom:1px solid var(--gold-dim)}
-.faq-a a:hover{color:var(--ink)}
 
-/* Purchase / notice block */
+/* -- NOTICE BLOCK -------------------------------------------------- */
 .notice-block{margin-top:44px;background:var(--paper-dim);border:1px solid var(--rule);border-radius:6px;padding:26px 30px}
-.notice-block h3{font-size:1.1rem;margin-bottom:10px;font-family:var(--sans);font-weight:700}
-.notice-block p{font-size:15px;color:var(--ink-muted);margin-bottom:10px}
+.notice-block h3{font-size:1.15rem;margin-bottom:10px}
+.notice-block p{font-size:15px;margin-bottom:10px}
 .notice-block p:last-child{margin-bottom:0}
-.notice-block a{color:var(--forest);border-bottom:1px solid var(--gold-dim)}
 
-/* Legal document structure (privacy/terms) */
+/* -- LEGAL DOCUMENT STRUCTURE (privacy) ---------------------------- */
 .policy-section{margin-bottom:38px}
 .section-num{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gold-deep);margin-bottom:10px}
-.policy-section h2{font-size:1.55rem;margin-bottom:14px}
-.policy-section h3{font-size:1.15rem;margin:20px 0 8px;font-family:var(--sans);font-weight:700}
-.policy-section p{font-size:15.5px;color:var(--ink-muted);line-height:1.75}
+.policy-section h2{font-size:1.75rem;margin-bottom:14px}
+.policy-section h3{margin:20px 0 8px}
 .policy-section p strong{color:var(--ink)}
 .policy-section ul{margin:14px 0 0 20px}
 .policy-section li{font-size:15.5px;color:var(--ink-muted);line-height:1.8;margin-bottom:6px}
-.policy-section a{color:var(--forest);border-bottom:1px solid var(--gold-dim)}
-.policy-section a:hover{color:var(--ink)}
 .contact-block{background:var(--paper-card);border:1px solid var(--rule);border-radius:6px;padding:24px 28px;margin-top:12px}
-.contact-block p{color:var(--ink-muted);font-size:15px}
+.contact-block p{font-size:15px}
+
+/* -- TERMS: game supplement, TOC, and the Termly-generated body -----
+   The Termly body is imported markup: ~33 bare <h2> and ~19 bare <h3>
+   wrapped in <strong>. Without these rules they'd inherit style.css's
+   marketing display sizes (h2 up to 4.5rem), which is why they're pinned
+   to reading sizes here. */
+.supplement{background:var(--paper-card);border:1px solid var(--gold-dim);border-radius:6px;padding:32px 36px;margin-bottom:44px}
+.sup-label{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gold-deep);margin-bottom:12px}
+.supplement h2{font-size:1.6rem;margin-bottom:14px}
+.supplement h3{margin:22px 0 8px}
+.supplement p,.supplement li{font-size:15.5px;color:var(--ink-muted);line-height:1.75}
+.supplement ul{margin:12px 0 0 20px}
 
 .toc{background:var(--paper-card);border:1px solid var(--rule);border-radius:6px;padding:24px 28px;margin-bottom:44px}
-.toc h2{font-size:1.1rem;margin-bottom:14px;font-family:var(--sans);font-weight:700}
-.toc ol{margin:0;padding-left:20px}
-.toc li{font-size:14.5px;margin-bottom:6px}
-.toc a{color:var(--forest);border-bottom:1px solid var(--gold-dim)}
+.toc-label{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gold-deep);margin-bottom:14px}
+.toc a{display:block;font-size:14.5px;padding:4px 0;border-bottom:none}
 
-/* Press-kit specific */
-.fact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--rule);margin-bottom:48px}
+.termly-content{font-size:15.5px;color:var(--ink-muted);line-height:1.75}
+.termly-content h1{font-size:1.9rem;color:var(--ink);margin:0 0 18px}
+.termly-content h2{font-size:1.5rem;color:var(--ink);margin:36px 0 12px;line-height:1.25}
+.termly-content h3{font-size:1.12rem;font-family:var(--sans);font-weight:700;color:var(--ink);margin:24px 0 8px}
+.termly-content strong{color:var(--ink)}
+.termly-content a{color:var(--forest);border-bottom:1px solid var(--gold-dim);word-break:break-word}
+.termly-content ul{margin:12px 0 12px 20px}
+.termly-content li{margin-bottom:6px}
+
+/* -- PRESS KIT ------------------------------------------------------ */
+.fact-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--rule);margin-bottom:44px}
 .fact{padding:20px 24px 20px 0;border-bottom:1px solid var(--rule)}
 .fact-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gold-deep);margin-bottom:6px}
 .fact-value{font-size:16px;color:var(--ink)}
-.asset-row{display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.asset-row{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid var(--rule)}
 .asset-row:last-child{border-bottom:none}
-.asset-thumb{width:64px;height:64px;border-radius:10px;overflow:hidden;flex:none;background:var(--paper-dim)}
+.asset-thumb{width:64px;height:64px;border-radius:32% 32% 6px 6px;overflow:hidden;flex:none;background:var(--paper-dim)}
 .asset-thumb img{width:100%;height:100%;object-fit:cover}
-.asset-meta h3{font-size:15px;font-family:var(--sans);font-weight:700;margin-bottom:4px}
-.asset-meta p{font-size:13.5px;color:var(--ink-muted)}
+.asset-meta h3{font-size:15px;margin-bottom:4px}
+.asset-meta p{font-size:13.5px;margin:0}
 
 @media(max-width:600px){
-  .page-header{padding:48px 6% 36px}
+  .page-header{padding:44px 6% 34px}
   .content{padding:44px 6% 56px}
-  .card{padding:26px 24px}
+  .card,.supplement{padding:26px 24px}
   .fact-grid{grid-template-columns:1fr}
+  .content h2,.policy-section h2,.supplement h2{font-size:1.5rem}
+  .faq-heading{font-size:1.6rem}
 }

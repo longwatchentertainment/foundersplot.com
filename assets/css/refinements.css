@@ -1,0 +1,6 @@
+@import url('style.css');
+.product-scene{background:#f6efdd;border-radius:48% 48% 8px 8px;padding:28px 16px 48px;isolation:isolate}
+.product-scene img{mix-blend-mode:multiply;filter:none}
+.product-caption{bottom:18px;color:#52603c}
+.journey h2 em{color:#8a6825}
+@media(max-width:600px){.product-scene{padding-bottom:42px}.hero .platforms{font-size:11px}.eyebrow{font-size:11px}}
