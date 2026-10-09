@@ -28,7 +28,7 @@
   <div class="page-header-inner">
     <p class="eyebrow">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective date: June 14, 2026 &nbsp;&middot;&nbsp; Last updated: June 14, 2026</p>
+    <p class="updated">Effective date: June 14, 2026 &nbsp;&middot;&nbsp; Last updated: October 8, 2026</p>
   </div>
 </div>
 
@@ -54,19 +54,25 @@
       <h2>What we collect and why</h2>
 
       <p><strong>Account and game data</strong><br>
-      When you play, we store your game progress, in-game economy state, and settings in our database (Supabase). This data is tied to an anonymous player ID. We do not require you to provide your real name or email address to play.</p>
+      To create an account you give us an email address and a password. Sign-in is handled by Supabase Auth; we never see your password. When you play, we store your game progress, in-game economy state, items, and settings (including the business name and portrait you choose) in our database (Supabase), tied to your account and an anonymous player ID. We do not ask for your real name.</p>
 
       <p><strong>Purchase data</strong><br>
-      If you make an in-app purchase, the transaction is processed by Apple or Google. We use RevenueCat to manage entitlements. We receive confirmation that a purchase was made and what was purchased — we do not receive your payment card details.</p>
+      If you make an in-app purchase, the transaction is processed by Apple or Google. We use RevenueCat to manage entitlements. We receive confirmation that a purchase was made and what was purchased — we do not receive your payment card details. RevenueCat identifies you by your anonymous player ID; if you joined with a referral code, that code is attached to your RevenueCat record.</p>
 
       <p><strong>Advertising</strong><br>
-      Founder's Plot shows rewarded advertisements through Google AdMob. On iOS, we ask for your permission before allowing AdMob to use your device's advertising identifier (ATT prompt). If you decline, you will still see ads but they will not be personalized. AdMob may collect device identifiers, IP address, and usage data for ad targeting. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a> for details.</p>
+      Founder's Plot shows rewarded advertisements through Google AdMob. On iOS, we ask for your permission before allowing AdMob to use your device's advertising identifier (ATT prompt). If you decline, you will still see ads but they will not be personalized. If you are in the European Economic Area or the UK, we ask for your consent through Google's consent form before personalized ads are shown. AdMob may collect device identifiers, IP address, and usage data for ad targeting. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a> for details.</p>
 
       <p><strong>Analytics</strong><br>
-      We use Amplitude to understand how the game is played — which features are used, where players get stuck, and what needs improvement. Analytics data is behavioral (what actions you take) and does not include personal identifying information beyond an anonymous player ID.</p>
+      We record gameplay events (for example harvests, sales, and which getting-started steps you complete) to understand how the game is played and where players get stuck. These events are stored in our own database (Supabase), tied to your anonymous player ID, along with basic app details such as your device platform and session. We do not use a third-party analytics service. You can turn this off at any time with the "Opt out of analytics" switch on the Account tab.</p>
 
-      <p><strong>Device location (approximate)</strong><br>
-      We use your device's approximate location to assign a regional weather profile that makes the game's weather events realistic for your area. We do not store precise GPS coordinates. Location data is used only for this purpose and is never shared with advertisers.</p>
+      <p><strong>Location</strong><br>
+      We do not use your device's location. The farmers market uses real weather for Wichita, Kansas, which our servers fetch from Open-Meteo; no information about you is sent to get it.</p>
+
+      <p><strong>Notifications</strong><br>
+      If you allow notifications, the game schedules reminders on your device (for example, when a tree is ready to harvest). They are created on your device; we do not collect a push token.</p>
+
+      <p><strong>Referrals</strong><br>
+      If you share or use a referral code, we record which two accounts the code links so we can pay referral rewards.</p>
 
     </div>
 
@@ -78,8 +84,7 @@
         <li><strong>Supabase</strong> — database and authentication &nbsp;<a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy policy</a></li>
         <li><strong>RevenueCat</strong> — in-app purchase management &nbsp;<a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">privacy policy</a></li>
         <li><strong>Google AdMob</strong> — rewarded advertisements &nbsp;<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy policy</a></li>
-        <li><strong>Amplitude</strong> — product analytics &nbsp;<a href="https://amplitude.com/privacy" target="_blank" rel="noopener">privacy policy</a></li>
-        <li><strong>OpenWeatherMap</strong> — regional weather data &nbsp;<a href="https://openweathermap.org/privacy-policy" target="_blank" rel="noopener">privacy policy</a></li>
+        <li><strong>Open-Meteo</strong> — weather data for the farmers market (a fixed location; no personal data is sent) &nbsp;<a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener">terms and privacy</a></li>
         <li><strong>Apple / Google</strong> — app distribution and purchase processing</li>
       </ul>
     </div>
@@ -87,7 +92,8 @@
     <div class="policy-section">
       <div class="section-num">04</div>
       <h2>Data retention</h2>
-      <p>We retain your game data for as long as you have an active account. If your account is inactive for 24 months, we may delete your data. You can request deletion at any time by contacting us.</p>
+      <p>We retain your game data for as long as you have an active account. If your account is inactive for 24 months, we may delete your data.</p>
+      <p><strong>Deleting your account.</strong> You can delete your account at any time in the app (Account tab, Delete Account), or by emailing us at <a href="mailto:support@longwatchentertainment.com">support@longwatchentertainment.com</a> from the address on your account. Deleting your account permanently removes your sign-in, game progress, coins, items, referral records, and analytics events. Purchased coins are not refunded. We keep the records of your in-app purchases (the transaction log from Apple or Google, received through RevenueCat and linked only to your anonymous player ID) as needed for accounting, tax, and refund handling.</p>
       <p>Analytics data is retained for 12 months and then aggregated or deleted.</p>
     </div>
 
@@ -100,7 +106,7 @@
     <div class="policy-section">
       <div class="section-num">06</div>
       <h2>Your rights</h2>
-      <p>Depending on where you live, you may have the right to access, correct, or delete the personal data we hold about you. To exercise any of these rights, or to request a copy of your data, contact us at the address below. We will respond within 30 days.</p>
+      <p>Depending on where you live, you may have the right to access, correct, or delete the personal data we hold about you. You can delete your account yourself in the app (Account tab, Delete Account). To exercise any other right, or to request a copy of your data, contact us at the address below. We will respond within 30 days.</p>
       <p>California residents: you have additional rights under the CCPA. We do not sell personal information.</p>
       <p>EEA/UK residents: you have rights under GDPR including access, rectification, erasure, and portability. Our lawful basis for processing is legitimate interests (running the game) and consent (for advertising identifiers on iOS).</p>
     </div>
