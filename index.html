@@ -23,7 +23,7 @@
     <a href="/support.html">Support</a>
     <a href="/press.html">Press</a>
   </nav>
-  <a class="button small gold" href="#notify">Notify me</a>
+  <a class="button small gold" href="#download">Get the game</a>
 </header>
 
 <main id="main">
@@ -35,8 +35,8 @@
     <p class="eyebrow">An orchard business simulation</p>
     <h1>You start with<br>one apple tree.<br><em>What grows next<br>is up to you.</em></h1>
     <p class="lead">Grow an orchard. Craft your products.<br>Build a business of your own.</p>
-    <a class="button gold" href="#notify">Get notified at launch <span aria-hidden="true">&rarr;</span></a>
-    <p class="platforms">iOS &amp; Android <span>&middot;</span> Coming 2027 <span>&middot;</span> Free to play</p>
+    <a class="button gold" href="https://play.google.com/store/apps/details?id=com.longwatch.foundersplot" rel="noopener">Get it on Google Play <span aria-hidden="true">&rarr;</span></a>
+    <p class="platforms">Out now on Android <span>&middot;</span> iPhone coming soon <span>&middot;</span> Free to play</p>
   </div>
   <div class="hero-caption">Small beginnings. Something worth growing.</div>
 </section>
@@ -140,11 +140,14 @@
   <p class="community">A world shaped by its founders. Community demand helps guide the facilities and opportunities that come next.</p>
 </section>
 
-<section class="signup" id="notify">
+<section class="signup" id="download">
+  <span id="notify"></span>
   <div class="signup-inner">
-    <p class="eyebrow">Something good is growing</p>
-    <h2>Be there for<br>the first harvest.</h2>
-    <p>One email when Founder's Plot is ready to download.</p>
+    <p class="eyebrow">Now growing on Android</p>
+    <h2>Plant your<br>first tree today.</h2>
+    <p>Founder's Plot is out now on Google Play.</p>
+    <a class="button gold" href="https://play.google.com/store/apps/details?id=com.longwatch.foundersplot" rel="noopener">Get it on Google Play <span aria-hidden="true">&rarr;</span></a>
+    <p class="signup-iphone">On iPhone? Leave your email and we'll send one note when it's on the App Store.</p>
     <div class="signup-form-wrap notify-form-wrap">
       <form
         class="signup-form notify-form"
@@ -162,12 +165,12 @@
             required
             autocomplete="email"
           >
-          <button class="button gold signup-submit notify-submit" type="submit">Notify me at launch</button>
+          <button class="button gold signup-submit notify-submit" type="submit">Notify me for iPhone</button>
         </div>
       </form>
     </div>
     <p class="signup-note notify-note">By signing up you agree to our <a href="/terms.html">Terms of Service</a> &nbsp;&middot;&nbsp; Your email is used for this one notification only &nbsp;&middot;&nbsp; Never shared</p>
-    <p class="platforms">iOS &amp; Android <span>&middot;</span> Coming 2027</p>
+    <p class="platforms">Android: out now <span>&middot;</span> iPhone: coming soon</p>
   </div>
 </section>
 
@@ -205,7 +208,7 @@
         var wrap = form.closest('.notify-form-wrap');
         wrap.innerHTML =
           '<p style="font-family:\'Libre Caslon Display\',Georgia,serif;font-size:22px;color:#f1d88d;margin-bottom:8px;">✓ You\'re on the list.</p>' +
-          '<p style="font-family:\'DM Sans\',Arial,sans-serif;font-size:13px;letter-spacing:0.05em;color:#c4cebc;text-transform:uppercase;">One email, when Founder\'s Plot launches.</p>';
+          '<p style="font-family:\'DM Sans\',Arial,sans-serif;font-size:13px;letter-spacing:0.05em;color:#c4cebc;text-transform:uppercase;">One email, when Founder\'s Plot is on iPhone.</p>';
       });
     });
   })();
