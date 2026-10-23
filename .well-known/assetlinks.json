@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.longwatch.foundersplot",
+      "sha256_cert_fingerprints": [
+        "83:CD:A5:7F:8B:AF:97:DC:61:19:89:1C:13:23:53:6F:2C:1A:8A:A1:BA:BC:E2:30:77:6D:E8:86:04:B3:76:6F",
+        "A4:A3:DE:6E:5B:88:AC:5C:62:1D:52:AF:75:94:E6:79:6C:0D:77:3B:C2:B1:11:57:3F:45:5B:3C:2D:3E:10:81"
+      ]
+    }
+  }
+]
