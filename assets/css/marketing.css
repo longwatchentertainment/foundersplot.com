@@ -34,3 +34,6 @@
 
 /* Dev log section linking r/FoundersPlot (2026-10-27) */
 .devlog{padding:80px 7%;text-align:center;background:#e9e0cb;border-top:1px solid #bda97844}.devlog-inner{max-width:700px;margin:0 auto}.devlog h2{margin-bottom:22px}.devlog p{color:#586351}.devlog .button{margin-top:30px}@media(max-width:600px){.devlog{padding:60px 7%}.devlog p{font-size:16px}.devlog .button{font-size:15px}}
+
+/* App Store and Google Play badges side by side (iPhone launch) */
+.store-badges{display:flex;flex-wrap:wrap;gap:14px;align-items:center}.signup .store-badges{justify-content:center;margin-top:26px}.store-badges .play-badge,.signup .store-badges .play-badge{margin-top:0}.store-badges .play-badge img{height:60px;width:auto}@media(max-width:600px){.store-badges{gap:12px}.store-badges .play-badge img{height:46px}}
