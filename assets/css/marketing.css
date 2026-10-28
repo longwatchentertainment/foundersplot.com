@@ -28,3 +28,6 @@
 @media(max-width:600px){
   .signup-form-row{flex-direction:column}
 }
+
+/* Official Google Play badge (replaces the gold text button, 2026-10-27) */
+.play-badge{display:inline-block;margin-top:4px;transition:transform .15s,filter .15s}.play-badge img{width:200px;height:auto}.play-badge:hover{filter:brightness(1.12);transform:translateY(-2px)}.signup .play-badge{margin-top:26px}@media(max-width:600px){.play-badge img{width:180px}}
