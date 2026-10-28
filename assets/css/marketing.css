@@ -21,7 +21,7 @@
 }
 .signup-email::placeholder{color:#93a292}
 .signup-email:focus{border-color:var(--gold)}
-.signup-submit{white-space:nowrap}
+.signup .signup-submit{white-space:nowrap;margin-top:0}
 .signup .signup-note{margin-top:18px}
 .signup-note a{border-bottom:1px solid #c4cebc}
 
