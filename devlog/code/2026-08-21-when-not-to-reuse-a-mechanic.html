@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Weekly build log from a solo dev building a mobile business sim (React Native/Expo, Zustand). This week was almost entirely about scoping and building six...">
+<title>When not to reuse a mechanic just because it looks similar | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/code/2026-08-21-when-not-to-reuse-a-mechanic.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="When not to reuse a mechanic just because it looks similar | Founder's Plot dev log">
+<meta property="og:description" content="Weekly build log from a solo dev building a mobile business sim (React Native/Expo, Zustand). This week was almost entirely about scoping and building six...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/code/2026-08-21-when-not-to-reuse-a-mechanic.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"When not to reuse a mechanic just because it looks similar","datePublished":"2026-08-21","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/code/2026-08-21-when-not-to-reuse-a-mechanic.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/#code">Behind the code</a></p>
+    <h1>When not to reuse a mechanic just because it looks similar</h1>
+    <p class="updated"><time datetime="2026-08-21">August 21, 2026</time> &middot; written for other developers</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>Weekly build log from a solo dev building a mobile business sim (React Native/Expo, Zustand). This week was almost entirely about scoping and building six interacting economic subsystems for one game feature, and the main lesson was about when NOT to reuse an existing mechanic just because it looks similar on the surface.</p>
+<p>The feature is a farmers market. A few weeks ago I shipped an MVP version (weekly window, fixed price premium, a manual &quot;sell 1&quot; button) deliberately scoped way down from the full design doc. This week I built the rest of it back in: a market reputation system, a separate customer-loyalty system, a wholesale-buyer archetype, food blogger reviews, NPC competitor booths, live weather-driven demand, and a booth-tier capacity upgrade. Six files, roughly 21k lines of diff when you include the store slice and check files that had to change alongside them (a lot of that is test churn from touching a shared slice, not new logic).</p>
+<p>The interesting decision was reputation vs. loyalty. The design doc uses &quot;loyal customers&quot; language for both a long-run quality reputation and a short-run &quot;do you show up every week&quot; mechanic, and it would have been easy to build one number and call it done. I kept them mechanically separate on purpose: reputation is a lifetime, monotonically-increasing quality signal (never decreases, rewards &quot;have you always been good&quot;), loyalty is a consecutive-weekend attendance streak that resets the moment you skip a weekend (rewards &quot;are you reliably showing up right now&quot;). Two real-world phenomena, two different failure modes, sharing the same flavor text in the doc. Collapsing them into one stat would have meant a single bad weekend could tank a number that's supposed to represent months of consistent quality, which felt wrong the moment I thought about actually playing it.</p>
+<p>Also pulled forward something that had been explicitly deferred to post-launch: real weather-driven demand. The original lean scope cut this specifically to avoid an external API dependency and a location-permission/privacy surface. Instead of using device location, I hardcoded a single location (south central Kansas, the same region the existing weather-event system already uses) and call Open-Meteo, which needs no API key and no account. Zero new privacy surface, zero new consent dialog, same free-tier discipline as everything else in this stack. Confirmed the tradeoff with a direct question before building rather than assuming it was fine to reopen a closed scoping decision.</p>
+<p>Found one real bug via the headless test suite rather than on-device: the reputation promotion/demotion check could fire both directions in the same call under certain state, which would have looked like a UI glitch to any actual player (rank flickering in one frame). Caught and fixed before it ever got near a device.</p>
+<p>Honest state of things: none of this is committed yet, and none of it has touched a real phone. It's built against the design doc, typechecks clean, and passes the full headless check suite, but &quot;passes my own tests&quot; and &quot;survives me actually tapping through it&quot; have diverged before in this project, so I'm not calling it done until it does. That's the next session. If you're building something similar, my one takeaway this week: when a design doc uses one phrase for two different mechanics, stop and ask whether they're actually the same number before you build one.</p>
+    </article>
+    <p class="devlog-related">This week's dev log for players: <a href="/devlog/2026-08-21-the-market-learned-some-names.html">Dev Log #4: The Market Learned Some Names</a></p>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/code/2026-08-28-laggy-ui-that-was-not-slow.html">&larr; Newer: Laggy UI that wasn't slow: state that never re-rendered</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

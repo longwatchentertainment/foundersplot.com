@@ -37,3 +37,6 @@
 
 /* App Store and Google Play badges side by side (iPhone launch) */
 .store-badges{display:flex;flex-wrap:wrap;gap:14px;align-items:center}.signup .store-badges{justify-content:center;margin-top:26px}.store-badges .play-badge,.signup .store-badges .play-badge{margin-top:0}.store-badges .play-badge img{height:60px;width:auto}@media(max-width:600px){.store-badges{gap:12px}.store-badges .play-badge img{height:46px}}
+
+/* Latest dev log posts on the home page (filled in by scripts/build-devlog.mjs) */
+.devlog-latest{list-style:none;margin:28px auto 0;padding:0;text-align:left;max-width:560px}.devlog-latest li{border-top:1px solid #bda97866}.devlog-latest li:last-child{border-bottom:1px solid #bda97866}.devlog-latest a{display:block;padding:14px 4px;color:#2f3a2b;text-decoration:none}.devlog-latest a:hover span{text-decoration:underline}.devlog-latest time{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:#8d713b;margin-bottom:4px}.devlog-latest span{font-size:16px;line-height:1.4}

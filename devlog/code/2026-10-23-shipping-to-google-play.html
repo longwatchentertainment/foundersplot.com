@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Solo dev, React Native with Expo, Supabase for the backend. The game went live on Google Play on October 20 after about a day in review. Some of it might...">
+<title>What I learned shipping my first mobile game to Google Play this week | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/code/2026-10-23-shipping-to-google-play.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What I learned shipping my first mobile game to Google Play this week | Founder's Plot dev log">
+<meta property="og:description" content="Solo dev, React Native with Expo, Supabase for the backend. The game went live on Google Play on October 20 after about a day in review. Some of it might...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/code/2026-10-23-shipping-to-google-play.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What I learned shipping my first mobile game to Google Play this week","datePublished":"2026-10-23","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/code/2026-10-23-shipping-to-google-play.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/#code">Behind the code</a></p>
+    <h1>What I learned shipping my first mobile game to Google Play this week</h1>
+    <p class="updated"><time datetime="2026-10-23">October 23, 2026</time> &middot; written for other developers</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>Solo dev, React Native with Expo, Supabase for the backend. The game went live on Google Play on October 20 after about a day in review. Some of it might save you time.</p>
+<p><strong>Your own test tools can leak into production.</strong> Sandbox purchases (TestFlight and Google Play license testers) are free. I realized that with a server side webhook that grants coins on every purchase event, a free tester purchase grants real in game currency. I added a table of allowed tester accounts. The webhook still records every event, but only grants coins to accounts on the list. The one account I had to remember to add was the Apple review demo account, because App Review buys in sandbox and has to see the coins arrive. If you use RevenueCat or anything similar, check what your webhook does with sandbox events before launch.</p>
+<p><strong>A cloud save bug that could clone currency.</strong> On sign in, the app compared the save on the device against the server and could upload the device copy. If the device still held a different account's save, that save could land on the account that just signed in. I found it while testing two accounts on one emulator. The fix is a rule: never upload a device save that belongs to another account on sign in. I was lucky that I found it before any real money was involved. If your game has a local cache and multiple accounts, test the account switch specifically.</p>
+<p><strong>Two key fingerprints for Android App Links.</strong> I wanted referral and password reset links to open the app. Android needs a digital asset links file on your website with the SHA 256 fingerprints of your signing certificate. With Play App Signing, the key Google signs with is not the key you upload with. I published both fingerprints. Google's Digital Asset Links API then read both, and the Play Console deep links page said all links were working. I would have lost an hour if I had only used the key from my own build.</p>
+<p><strong>Smaller process notes.</strong></p>
+<p>I added a forced update switch (a minimum app version value in a config table) so I can make old builds ask for an update. It is a few lines of code and I would not launch without it again.</p>
+<p>Play Console would not let me turn on managed publishing for a first release, so the app went live automatically when approved. Plan your launch timing around that if you want control.</p>
+<p><strong>Error messages are product work.</strong> Apple's earlier review rejected a build for showing a raw ad error. This week I did the same cleanup for coin purchases (cancelled, unavailable, and failed now have separate messages) and for sign in, sign up and reset errors. Long button labels now shrink to fit instead of truncating. None of this is exciting, but all of it is what a reviewer or a first time player sees.</p>
+<p><strong>Search visibility, honestly.</strong> Searching the game's name mostly returns a 2016 film. I added a sitemap, structured data and a canonical URL to the website, then verified it in Google Search Console and Bing Webmaster Tools. It is too early to know if it works. I will report numbers once there are enough to mean something.</p>
+<p><strong>The honest scoreboard.</strong> Around ten commits in the app repo this week, which is a lighter week than usual because most of the work was submission paperwork, store assets and website changes. Two real players on day one. The iOS build is still waiting for Apple.</p>
+<p><strong>Still open.</strong> A second device can show stale coins after a claim on another device, and a stale ad button can play a full ad before refusing. Both are low priority and both are on my list.</p>
+<p>Happy to answer questions about the submission process.</p>
+    </article>
+    <p class="devlog-related">This week's dev log for players: <a href="/devlog/2026-10-23-live-on-google-play.html">Dev Log #13: Founder's Plot Is Live On Google Play</a></p>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/code/2026-10-30-one-ad-four-rewards.html">&larr; Newer: One rewarded ad came back as four rewards, and other things I found by looking at real players</a><a class="devlog-older" href="/devlog/code/2026-10-16-a-float-broke-every-harvest.html">Older: A float that broke every harvest on fresh accounts &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

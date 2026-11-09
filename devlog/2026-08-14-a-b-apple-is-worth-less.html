@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Last time was about margins, raw apples versus juice. This week was about finishing what that opened up, plus a bunch of less glamorous stuff that had to...">
+<title>Dev Log #3: A B Apple Is Worth Less Than an A Apple | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/2026-08-14-a-b-apple-is-worth-less.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dev Log #3: A B Apple Is Worth Less Than an A Apple | Founder's Plot dev log">
+<meta property="og:description" content="Last time was about margins, raw apples versus juice. This week was about finishing what that opened up, plus a bunch of less glamorous stuff that had to...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/2026-08-14-a-b-apple-is-worth-less.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Log #3: A B Apple Is Worth Less Than an A Apple","datePublished":"2026-08-14","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/2026-08-14-a-b-apple-is-worth-less.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/">Dev log</a></p>
+    <h1>Dev Log #3: A B Apple Is Worth Less Than an A Apple</h1>
+    <p class="updated"><time datetime="2026-08-14">August 14, 2026</time></p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>Last time was about margins, raw apples versus juice. This week was about finishing what that opened up, plus a bunch of less glamorous stuff that had to happen eventually.</p>
+<p><strong>The recipe catalog is done.</strong> Sparkling cider, apple cider vinegar, dried apple rings, and apple jam are all in now, which brings the starter lineup to a full eight products. Each one got real equipment progression the same way juice and applesauce did, and I actually priced these out against real farmers market and grocery numbers instead of guessing. One honest surprise: sparkling cider is the worst dollar per hour product in the whole catalog at the entry equipment tier, even though it feels like it should be a premium item. The margin story isn't uniform across products, which is closer to how a real small food business actually works than I expected going in.</p>
+<p><strong>Apple grade finally means something.</strong> This was the big one. Up until now, a Grade A apple and a Grade C apple were worth the same once they went into a batch. That was never the plan, the design doc always said Grade C should be locked to bulk products like applesauce and vinegar, and grade was supposed to affect price. So now it actually does. Six of the eight recipes simply cannot touch a Grade C apple, no matter how many are sitting in your inventory. And every batch prices itself off the worst grade of apple that went into it, A at full price, B at 80 percent, C at half. It sounds small but it touches almost everything downstream, since a shelf full of juice can now be worth different amounts depending on what went into it. Haven't tested this one on a real device yet, that's next.</p>
+<p><strong>The coin economy is fully built out.</strong> Pest cures, soil restores, harvest boosts, batch skips, cosmetic labels, all the ways coins can get spent are in, along with the ways to earn them without paying, achievements, daily login, watching ads. This is the first time the full loop actually exists end to end instead of just the harvest timer skip that's been there for weeks.</p>
+<p><strong>Notifications and the privacy stuff got built too.</strong> These are boring to write about but required before this thing can ship anywhere, harvest ready alerts, a consent flow for European users, an app tracking prompt on iOS. Not fun, necessary.</p>
+<p><strong>The bug hunt.</strong> Testing all of this on an actual phone surfaced six real bugs, mostly small but one nasty one where a failed weather response could get the game stuck showing you an event you couldn't get past without restarting the app. Also spent a while convinced the weather odds were broken because storms seemed to be showing up way too often, ran the actual odds function 100,000 times in isolation and it came back almost exactly on target. The bug was in how testing itself was polluting the counter, not the odds. Good reminder to check my assumptions before assuming the code is wrong.</p>
+<p>Heavier week than I expected. Next up: getting grade routing in front of real device testing, and then the farmers market gets its full scope back, demand shifts, competitors, the works.</p>
+<p>Charles</p>
+    </article>
+    
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/2026-08-21-the-market-learned-some-names.html">&larr; Newer: Dev Log #4: The Market Learned Some Names</a><a class="devlog-older" href="/devlog/2026-08-07-apples-stop-being-apples.html">Older: Dev Log #2: Apples Stop Being Apples &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

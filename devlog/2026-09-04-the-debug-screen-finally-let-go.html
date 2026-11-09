@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Every dev log so far has come with the same asterisk: it works, but you'd never see it, because the whole game has been running through one giant debug...">
+<title>Dev Log #6: The Debug Screen Finally Let Go | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/2026-09-04-the-debug-screen-finally-let-go.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dev Log #6: The Debug Screen Finally Let Go | Founder's Plot dev log">
+<meta property="og:description" content="Every dev log so far has come with the same asterisk: it works, but you'd never see it, because the whole game has been running through one giant debug...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/2026-09-04-the-debug-screen-finally-let-go.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Log #6: The Debug Screen Finally Let Go","datePublished":"2026-09-04","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/2026-09-04-the-debug-screen-finally-let-go.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/">Dev log</a></p>
+    <h1>Dev Log #6: The Debug Screen Finally Let Go</h1>
+    <p class="updated"><time datetime="2026-09-04">September 4, 2026</time></p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>Every dev log so far has come with the same asterisk: it works, but you'd never see it, because the whole game has been running through one giant debug menu since the first playable build. That changed this week. There's a real bottom tab bar now, and the Orchard is the first piece to move out of the debug screen into an actual player-facing tab, plots and watering and harvesting and weather and all. Processing and the Market are next, same debug-screen-to-real-tab move, just not done yet. It's not a flashy change to describe, but it's the one that makes everything else this year has built start to feel like an actual app instead of a spreadsheet with buttons.</p>
+<p>With that plumbing in place I went back and filled in some real gaps. The orchard now has a second, third, and fourth plot to buy, so you're not stuck babying two trees forever, and there are two permanent upgrades, drip irrigation and a compost system, that slow down watering chores and passively heal your soil over time. Processing got a second queue slot so you can run two batches at once instead of babysitting one at a time, and every equipment upgrade past your starting gear now takes real installation time instead of being instant, matching how the weather-mitigation buildings already worked. I also went through the story beats that fire as you hit harvest milestones and found five of them still showing a &quot;not built yet&quot; placeholder for mechanics that had actually shipped weeks ago. Fixed the flags, and gave harvest 8 a real coin reward instead of just a pat on the back.</p>
+<p>The bigger addition is the start of the referral system. There's a shareable link now, and if you invite someone who actually starts playing and reaches Tier 2, you both get a coin bonus once you claim it. I also built the other half of that GDD feature, a &quot;Founding Farmer&quot; badge for the first 500 players, so if you're reading this and playing the app early, that's for you. Password reset also finally works the right way, through a real link on foundersplot.com instead of a broken email pointing nowhere, and there's a native rating prompt now that shows up at reasonable moments, like your second achievement, instead of nagging you on day one.</p>
+<p>I'm being upfront that none of this has touched a real phone yet. Last week's lesson was that the gap between &quot;typechecks clean&quot; and &quot;feels good in your hand&quot; is bigger than it looks, and this week has more surface area than any single week so far: new tabs, new purchases, new timers, a whole referral loop with two devices talking to a server. So next week is testing week, working through all of it on-device before I let myself add anything new. If something here ends up shaky when I actually play it, that's expected, and I'd rather tell you that now than pretend everything above is bulletproof.</p>
+<p>Charles</p>
+    </article>
+    <p class="devlog-related">For developers: <a href="/devlog/code/2026-09-04-real-navigation-and-referrals.html">the technical notes behind this week</a></p>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/2026-09-11-every-screen-got-a-real-building.html">&larr; Newer: Dev Log #7: Every Screen Got a Real Building</a><a class="devlog-older" href="/devlog/2026-08-28-i-finally-played-the-market.html">Older: Dev Log #5: I Finally Played the Market I Built &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

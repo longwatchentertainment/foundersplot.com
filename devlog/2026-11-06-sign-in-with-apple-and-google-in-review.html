@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sign in with Apple and Google is built, tested, and submitted to both stores. Version 1.1.0 is now waiting on approval. Google Play usually goes live on...">
+<title>Dev Log #15: Sign In With Apple And Google Is Out For Review | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/2026-11-06-sign-in-with-apple-and-google-in-review.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dev Log #15: Sign In With Apple And Google Is Out For Review | Founder's Plot dev log">
+<meta property="og:description" content="Sign in with Apple and Google is built, tested, and submitted to both stores. Version 1.1.0 is now waiting on approval. Google Play usually goes live on...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/2026-11-06-sign-in-with-apple-and-google-in-review.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Log #15: Sign In With Apple And Google Is Out For Review","datePublished":"2026-11-06","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/2026-11-06-sign-in-with-apple-and-google-in-review.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/">Dev log</a></p>
+    <h1>Dev Log #15: Sign In With Apple And Google Is Out For Review</h1>
+    <p class="updated"><time datetime="2026-11-06">November 6, 2026</time></p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p><strong>Sign in with Apple and Google is built, tested, and submitted to both stores.</strong> Version 1.1.0 is now waiting on approval. Google Play usually goes live on its own once Google signs off. On iPhone I will release it as soon as Apple approves it. I will tell you here when it is live.</p>
+<p>When it ships, you will see a &quot;Continue with Google&quot; button on Android. On iPhone you will see both Apple and Google, because Apple requires that you offer its option whenever you offer another one. You can skip making a password entirely. If you already have an account made with email, signing in with the same email brings you to the same farm, so you do not start over. I tested it on an Android emulator and on my own iPhone this week, including one account that ended up with email, Google and Apple all attached to it. There is one odd case I did not test, which is Apple's &quot;Hide My Email&quot; feature creating a separate account. If you hit it, tell me and I will fix it.</p>
+<p><strong>Why a new store version was needed.</strong> Both sign in options use code that has to be built into the app itself. I cannot send it to you as a quiet background update the way I send most fixes. That is why this one takes a store review, and why 1.1.0 is a real download rather than something that just appears.</p>
+<p><strong>The Market price preview now scrolls on iPhone.</strong> This one I found on my own phone. The list of prices would not scroll when I swiped it. The list was sitting inside something that grabbed the swipe first. I rearranged how the tap outside to close works, so the list gets your finger. The same fix went into the portrait picker and the other pop up panels, and the market list now shows a scrollbar so you can tell it scrolls. This fix already went out as a background update to people on 1.0.x.</p>
+<p><strong>Ad boosts got cheaper.</strong> Pest Treatment and Guaranteed Grade A now cost 1 ad each. The two 2x boosts now cost 2 ads each. Those were the actions where the old price felt like too much work for what you got back. My own risk here is that fewer total ads get watched, since those four were about a third of the ads in the first week of data. I am going to watch whether you use them more often, which would make it a fair trade. Instant Soil Restore is still 25 coins, which is 3 ads, and I know that is a bit out of line with the rest. I am leaving it alone until I see more play.</p>
+<p><strong>Better messages when ads will not load.</strong> One player told me ads kept failing on their work WiFi, and fine at home. Some work and school networks block ads. The game now says so when an ad does not load, and suggests trying mobile data. A timeout used to show a generic error, and now it shows the helpful one.</p>
+<p><strong>New App Store screenshots are live.</strong> The old set was a half finished July leftover in one slot. Apple locks screenshots on a live version, so changing them meant a tiny extra version. They went out on October 31.</p>
+<p><strong>What I am watching.</strong> The first App Store numbers are small and mostly friends and family. Lots of people see the game in App Store search, and very few tap to open it. That tells me the icon, name and first screenshot are the part to improve, not the game inside.</p>
+<p>Next week is about getting 1.1.0 released and checking Google sign in from a real Play Store install. iPad support is still on my list but is not started in earnest. If anything in the new sign in feels wrong, tell me. That is the most useful thing you can do right now.</p>
+<p>Charles</p>
+    </article>
+    <p class="devlog-related">For developers: <a href="/devlog/code/2026-11-06-native-social-login-with-expo.html">the technical notes behind this week</a></p>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-older" href="/devlog/2026-10-30-live-on-both-app-stores.html">Older: Dev Log #14: Founder's Plot Is Now Live On Both App Stores &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

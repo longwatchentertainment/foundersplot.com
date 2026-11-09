@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Weekly build log from a solo dev building a mobile business sim (React Native/Expo, Zustand, Supabase). Big week, arguably the biggest single push since...">
+<title>Real navigation, a referral system and breaking up one giant screen file | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/code/2026-09-04-real-navigation-and-referrals.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Real navigation, a referral system and breaking up one giant screen file | Founder's Plot dev log">
+<meta property="og:description" content="Weekly build log from a solo dev building a mobile business sim (React Native/Expo, Zustand, Supabase). Big week, arguably the biggest single push since...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/code/2026-09-04-real-navigation-and-referrals.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Real navigation, a referral system and breaking up one giant screen file","datePublished":"2026-09-04","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/code/2026-09-04-real-navigation-and-referrals.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/#code">Behind the code</a></p>
+    <h1>Real navigation, a referral system and breaking up one giant screen file</h1>
+    <p class="updated"><time datetime="2026-09-04">September 4, 2026</time> &middot; written for other developers</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>Weekly build log from a solo dev building a mobile business sim (React Native/Expo, Zustand, Supabase). Big week, arguably the biggest single push since the project started: real navigation, a chunk of new economy content, a referral system with server-side attribution, and a fix for a bug class I'd been putting off.</p>
+<p>The structural piece first, since everything else builds on it: for months every screen has lived inside one giant <code>OrchardDebugScreen.tsx</code> file, growing by copy-paste every time a new system shipped. This week that started unwinding for real. Added a bottom tab navigator and cut the Orchard domain, plots, watering, harvesting, weather display and buildings, orchard-wide boosts, out into its own real screen, pulling from the same store slices rather than duplicating logic. Processing and Market are still debug-screen-only for now; this is a three-part migration and Orchard was part one. The genuinely debug-only stuff (force season, force pest event, grant apples, reset save) stayed behind a <code>[DEV]</code> gate reachable from Account, confirmed to not render at all in a <code>__DEV__</code>-false build. One side effect worth flagging for anyone doing a similar split: alert dialogs from two different screens can now fire close together if both are active, so I added a shared alert queue rather than letting two <code>Alert.alert()</code> calls race each other and silently drop one.</p>
+<p>Content-wise: two more orchard plots (a 3rd and 4th, cash-gated with the same construction-timer mechanic the weather buildings already used, versus the always-instant 2nd plot), two permanent maintenance upgrades (drip irrigation, compost system, the latter gated behind the former), a second concurrent processing queue slot, and grade-exclusion toggles so you can tell the processing system to stop pulling from your Grade C stock. The bigger structural change buried in that list: every equipment upgrade past your first-ever purchase now goes through the same construction-timer system the weather-mitigation buildings pioneered a few weeks back, rather than resolving instantly. Generalizing that timer system to a second domain was mostly just confirming the existing skip-with-coins logic didn't have any weather-specific assumptions baked in, it didn't, so this was more wiring than new logic.</p>
+<p>I also did an audit pass on the 13 scripted engagement beats from the GDD and found 5 of them still flagged <code>mechanicImplemented: false</code> even though the systems they reference (weather, recipes, the Tier 2 gate) had shipped weeks earlier. Stale flags, not stale features, but stale flags are exactly the kind of thing that quietly rots a save-flow test. Fixed the flags and gave harvest 8 an actual coin grant instead of narration-only, since a &quot;reward&quot; beat with a fake reward is arguably worse than no beat at all.</p>
+<p>The referral system is the piece with the most moving parts: a unique code and shareable deep link per player (<code>https://www.foundersplot.com/refer/CODE</code>, Universal Links, reusing the AASA/associatedDomains infra I stood up for the password-reset flow a couple days ago), a Supabase migration adding 4 tables (<code>referral_codes</code>, <code>referral_redemptions</code>, <code>referral_config</code>, <code>pending_coin_grants</code>), and two Edge Functions (<code>referral-reward</code>, <code>claim-pending-grants</code>) that keep JWT verification on by default rather than the open-webhook pattern the AdMob/RevenueCat functions use. Rewards are a claim-based pull rather than a push, both sides tap &quot;Claim Pending Rewards&quot; rather than the server trying to push coins into a client that might be offline, which sidesteps a whole class of &quot;player was offline when the reward fired&quot; bugs. Config (reward amounts, monthly cap) lives in a single database row the Edge Function reads live, so tuning it later doesn't need a redeploy. Built the Founding Farmer badge alongside it, first 500 accounts ever, awarded via a Postgres trigger on <code>auth.users</code> rather than any client-side logic, which means it's tamper-proof by construction but also means the read policy currently only lets a player see their own row, a leaderboard or co-op display (both named in the GDD) would need that policy widened later.</p>
+<p>Also shipped, smaller: the password reset flow that was actually the trigger for building Universal Links infra in the first place, and a native App Store/Play Store rating prompt (<code>expo-store-review</code>) gated behind a 60-day cooldown and 3-lifetime cap on our own side, stacked on top of whatever quota each platform enforces internally.</p>
+<p>Net effect: a lot of surface area, and I mean that as a caution, not a boast, everything in this log is described as &quot;built&quot; against the design doc and the test suite, with zero on-device passes so far. Last week's whole post was about the gap between typechecks-clean and actually-works-in-your-hand, and this week has roughly ten times the surface area that week did: new nav, new purchases, new timers, and a two-device server-attribution flow that can't really be verified any other way. Next week is entirely testing, working the checklist top to bottom, before any new feature work starts.</p>
+    </article>
+    <p class="devlog-related">This week's dev log for players: <a href="/devlog/2026-09-04-the-debug-screen-finally-let-go.html">Dev Log #6: The Debug Screen Finally Let Go</a></p>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/code/2026-09-11-a-shared-component-layer-pays-off.html">&larr; Newer: A UI polish pass, and why a shared component layer pays off</a><a class="devlog-older" href="/devlog/code/2026-08-28-laggy-ui-that-was-not-slow.html">Older: Laggy UI that wasn't slow: state that never re-rendered &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

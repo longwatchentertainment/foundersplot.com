@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Most of this week was me playing the game from the first tap, again, and fixing every spot where it talked like a developer instead of like a person. I...">
+<title>Dev Log #12: Same Clock For Everyone, Words A Player Would Use | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/2026-10-16-same-clock-for-everyone.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dev Log #12: Same Clock For Everyone, Words A Player Would Use | Founder's Plot dev log">
+<meta property="og:description" content="Most of this week was me playing the game from the first tap, again, and fixing every spot where it talked like a developer instead of like a person. I...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/2026-10-16-same-clock-for-everyone.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Log #12: Same Clock For Everyone, Words A Player Would Use","datePublished":"2026-10-16","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/2026-10-16-same-clock-for-everyone.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/">Dev log</a></p>
+    <h1>Dev Log #12: Same Clock For Everyone, Words A Player Would Use</h1>
+    <p class="updated"><time datetime="2026-10-16">October 16, 2026</time></p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>Most of this week was me playing the game from the first tap, again, and fixing every spot where it talked like a developer instead of like a person. I also found a bug that made harvesting impossible on a fresh account, which was a good reminder of why I keep restarting from zero.</p>
+<p><strong>The Farmers Market now runs on one clock.</strong> Until this week the app figured out whether the market was open using your phone's time, and the server used a different time zone. For a few hours every Friday and Sunday evening, the app would say &quot;closed&quot; while the server said &quot;open,&quot; or the other way around. Now everyone shares US Central time, and the app asks the server what time it is instead of trusting the phone. I checked Friday and Sunday evenings, both daylight saving weekends, and New Year. The market weather card, the closed market tip, and How to Play now say &quot;south central Kansas,&quot; which is where the market lives.</p>
+<p><strong>The double boosts stopped being sneaky.</strong> 2x Next Harvest and Double Next Batch used to either refuse a second purchase or quietly stack into a 4x. Now a second purchase gives you a second boost, and the game says it plainly: &quot;Next 2 harvests: 2x yield each.&quot; Buy two, get two. Nothing more, nothing less.</p>
+<p><strong>A sick tree is &quot;pests&quot; now.</strong> I had been calling it blight in some places and pests in others. Players say pests, so every popup, tip, and button does too. Same cleanup for &quot;soil,&quot; which is &quot;soil quality&quot; everywhere, and for the first sale card, which no longer says &quot;4.2x&quot; and just tells you what happened in plain words.</p>
+<p><strong>Popups know their manners.</strong> After your first harvest I saw a pest popup, then a big &quot;you just found your margin&quot; screen land right on top of it. Now the order is the Harvested popup, then the sale result, then the pest popup, then anything else. When a Getting Started step pays out a free Harvest Skip, a popup points at it and tells you where to tap.</p>
+<p><strong>Small things that add up.</strong> The coins sheet shows when the next coin ad is ready. The Orchard inventory shows what your apples are worth. A sapling says &quot;Grows up in…&quot; instead of &quot;Still growing.&quot; Sign Out asks before it signs you out, and the delete button is red.</p>
+<p><strong>One honest note.</strong> Apple's review pushed back on a message that showed raw ad error text. Every ad button now says &quot;No ad available&quot; and explains what to try. The iOS build will also be iPhone only at launch. iPads can still run it in phone mode, but I would rather ship one layout that works than two that are rough.</p>
+<p>Next up is more cold playthroughs, and then real builds on real phones.</p>
+<p>Charles</p>
+    </article>
+    <p class="devlog-related">For developers: <a href="/devlog/code/2026-10-16-a-float-broke-every-harvest.html">the technical notes behind this week</a></p>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/2026-10-23-live-on-google-play.html">&larr; Newer: Dev Log #13: Founder's Plot Is Live On Google Play</a><a class="devlog-older" href="/devlog/2026-10-09-teaching-a-stranger-to-run-an-orchard.html">Older: Dev Log #11: Teaching A Stranger How To Run An Orchard &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
