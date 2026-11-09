@@ -15,7 +15,6 @@
 .devlog-post code{font-size:.9em;background:var(--paper-dim);padding:1px 5px;border-radius:4px;word-break:break-word}
 .devlog-post hr{border:none;border-top:1px solid var(--rule);margin:28px 0}
 
-.devlog-related{margin-top:26px}
 .devlog-pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:30px;padding-top:22px;border-top:1px solid var(--rule)}
 .devlog-pager a{font-size:14.5px;max-width:48%}
 .devlog-pager .devlog-older{margin-left:auto;text-align:right}
@@ -31,9 +30,6 @@
 .devlog-item h3 a{border-bottom:none;color:var(--ink)}
 .devlog-item h3 a:hover{color:var(--forest)}
 .devlog-item p{font-size:15px}
-.devlog-code{margin-top:56px;padding-top:40px;border-top:2px solid var(--rule)}
-.devlog-code h2{font-size:1.6rem;margin-bottom:10px}
-.devlog-code > p{margin-bottom:22px}
 
 @media(max-width:600px){
   .devlog-pager a{max-width:100%}

@@ -13,8 +13,7 @@ The dev log lives at https://www.foundersplot.com/devlog/. Nothing goes live unt
 
 | What | Where |
 |---|---|
-| Weekly post for players | `devlog/posts/YYYY-MM-DD-short-title.md` |
-| Optional notes for developers ("Behind the code") | `devlog/code/YYYY-MM-DD-short-title.md` (same date as that week's post) |
+| Weekly post | `devlog/posts/YYYY-MM-DD-short-title.md` |
 | Build script | `scripts/build-devlog.mjs` (plain Node, nothing to install) |
 
 - The first line of each file is the title, starting with `# ` (for example `# Dev Log #16: The Market Gets Busy`).
@@ -32,7 +31,7 @@ Run it after adding or editing a post, then commit the `.md` and the rebuilt fil
 
 ## Rules for every post
 
-- First person, plain words, written by Charles for real players. No hype.
+- The dev log is for players only: what changed in the game, why, and what is coming next. First person, plain words, written by Charles. No hype, and no technical write-ups (those stay offline in Charles's Dev Logs folder).
 - No em dashes. Say "Kansas", never the city.
 - Only claim what the commit notes, NEXT.md and the store status actually show. No invented player reports or results.
 - Nothing reaches `main` without Charles merging it.

@@ -4,19 +4,18 @@
 //   node scripts/build-devlog.mjs
 //
 // Sources (the only files a person or the Friday routine edits):
-//   devlog/posts/YYYY-MM-DD-some-slug.md   the weekly dev log for players
-//   devlog/code/YYYY-MM-DD-some-slug.md    optional "Behind the code" notes for developers
+//   devlog/posts/YYYY-MM-DD-some-slug.md   the weekly dev log, written for players
 // The first line of each file is the title ("# Dev Log #16: ..."). The rest is
 // plain markdown: paragraphs, **bold**, *italic*, `code`, [links](https://...),
 // "## " headings, "- " or "1. " lists, "> " quotes.
 //
 // Writes (never edit these by hand, they are rebuilt every time):
-//   devlog/<name>.html, devlog/code/<name>.html, devlog/index.html, devlog/feed.xml,
+//   devlog/<name>.html, devlog/index.html, devlog/feed.xml,
 //   the "latest posts" block on index.html and the dev log lines in sitemap.xml.
 //
 // The file name is the page address, so rename a file only before it is published.
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, unlinkSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -137,7 +136,8 @@ function excerpt(md, max = 220) {
 }
 
 // ---------------------------------------------------------------- posts
-function readPosts(folder, kind) {
+function readPosts() {
+  const folder = 'posts';
   const dir = join(ROOT, 'devlog', folder);
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
@@ -153,15 +153,14 @@ function readPosts(folder, kind) {
       const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
       const name = file.replace(/\.md$/, '');
       return {
-        kind,
         file,
         name,
         date: `${m[1]}-${m[2]}-${m[3]}`,
         dateLabel: `${MONTHS[mo - 1]} ${d}, ${y}`,
         title: first.slice(2).trim(),
         body,
-        url: folder === 'posts' ? `/devlog/${name}.html` : `/devlog/code/${name}.html`,
-        out: folder === 'posts' ? join(ROOT, 'devlog', `${name}.html`) : join(ROOT, 'devlog', 'code', `${name}.html`),
+        url: `/devlog/${name}.html`,
+        out: join(ROOT, 'devlog', `${name}.html`),
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.name < b.name ? 1 : -1));
@@ -193,7 +192,7 @@ const FOOTER = `<footer>
 </footer>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->`;
 
-const GENERATED = '<!-- Built by scripts/build-devlog.mjs from devlog/posts and devlog/code. Edit the .md file, not this page. -->';
+const GENERATED = '<!-- Built by scripts/build-devlog.mjs from devlog/posts. Edit the .md file, not this page. -->';
 
 function page({ title, description, canonical, head = '', eyebrow, h1, sub, content }) {
   return `<!DOCTYPE html>
@@ -243,8 +242,7 @@ ${FOOTER}
 `;
 }
 
-function postPage(p, related, newer, older) {
-  const isCode = p.kind === 'code';
+function postPage(p, newer, older) {
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -255,11 +253,6 @@ function postPage(p, related, newer, older) {
     mainEntityOfPage: `${SITE}${p.url}`,
     image: `${SITE}/assets/img/share.png`,
   };
-  const relatedLink = related
-    ? isCode
-      ? `<p class="devlog-related">This week's dev log for players: <a href="${related.url}">${esc(related.title)}</a></p>`
-      : `<p class="devlog-related">For developers: <a href="${related.url}">the technical notes behind this week</a></p>`
-    : '';
   const navLinks = [
     newer ? `<a class="devlog-newer" href="${newer.url}">&larr; Newer: ${esc(newer.title)}</a>` : '',
     older ? `<a class="devlog-older" href="${older.url}">Older: ${esc(older.title)} &rarr;</a>` : '',
@@ -269,13 +262,12 @@ function postPage(p, related, newer, older) {
     description: excerpt(p.body, 155),
     canonical: p.url,
     head: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`,
-    eyebrow: isCode ? '<a href="/devlog/#code">Behind the code</a>' : '<a href="/devlog/">Dev log</a>',
+    eyebrow: '<a href="/devlog/">Dev log</a>',
     h1: esc(p.title),
-    sub: `<time datetime="${p.date}">${p.dateLabel}</time>${isCode ? ' &middot; written for other developers' : ''}`,
+    sub: `<time datetime="${p.date}">${p.dateLabel}</time>`,
     content: `    <article class="card devlog-post">
 ${markdownToHtml(p.body)}
     </article>
-    ${relatedLink}
     ${navLinks ? `<nav class="devlog-pager" aria-label="More posts">${navLinks}</nav>` : ''}
     <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>`,
   });
@@ -289,7 +281,7 @@ function listItem(p) {
       </li>`;
 }
 
-function indexPage(players, codes) {
+function indexPage(posts) {
   return page({
     title: "Dev log | Founder's Plot",
     description: "Weekly notes from the solo developer of Founder's Plot: what changed in the game, why, and what is coming next.",
@@ -299,16 +291,9 @@ function indexPage(players, codes) {
     sub: 'Founder\'s Plot is made by one developer in Kansas. A new post goes up most Fridays. <a href="/devlog/feed.xml">RSS feed</a>',
     content: `    <section class="devlog-list" aria-label="Dev log posts">
       <ul>
-${players.map(listItem).join('\n')}
+${posts.map(listItem).join('\n')}
       </ul>
-    </section>
-${codes.length ? `    <section class="devlog-list devlog-code" id="code" aria-labelledby="code-heading">
-      <h2 id="code-heading">Behind the code</h2>
-      <p>The same weeks, written for other developers: what was built, what broke, and what I learned.</p>
-      <ul>
-${codes.map(listItem).join('\n')}
-      </ul>
-    </section>` : ''}`,
+    </section>`,
   });
 }
 
@@ -346,34 +331,23 @@ function replaceBetween(text, start, end, inner, label) {
 }
 
 // ---------------------------------------------------------------- build
-const players = readPosts('posts', 'player');
-const codes = readPosts('code', 'code');
-mkdirSync(join(ROOT, 'devlog', 'code'), { recursive: true });
+const posts = readPosts();
 
 // Remove pages whose source file is gone (a renamed or withdrawn post).
-for (const [folder, list] of [['devlog', players], [join('devlog', 'code'), codes]]) {
-  const keep = new Set(list.map((p) => `${p.name}.html`));
-  for (const f of readdirSync(join(ROOT, folder))) {
-    if (!f.endsWith('.html') || f === 'index.html' || keep.has(f)) continue;
-    const full = join(ROOT, folder, f);
-    if (readFileSync(full, 'utf8').includes(GENERATED)) unlinkSync(full);
-  }
+const keep = new Set(posts.map((p) => `${p.name}.html`));
+for (const f of readdirSync(join(ROOT, 'devlog'))) {
+  if (!f.endsWith('.html') || f === 'index.html' || keep.has(f)) continue;
+  const full = join(ROOT, 'devlog', f);
+  if (readFileSync(full, 'utf8').includes(GENERATED)) unlinkSync(full);
 }
 
-const byDate = (list, date) => list.find((p) => p.date === date);
-for (const list of [players, codes]) {
-  list.forEach((p, i) => {
-    const related = p.kind === 'player' ? byDate(codes, p.date) : byDate(players, p.date);
-    writeFileSync(p.out, postPage(p, related, list[i - 1], list[i + 1]));
-  });
-}
-writeFileSync(join(ROOT, 'devlog', 'index.html'), indexPage(players, codes));
-const all = [...players, ...codes].sort((a, b) => (a.date < b.date ? 1 : -1));
-writeFileSync(join(ROOT, 'devlog', 'feed.xml'), feed(all));
+posts.forEach((p, i) => writeFileSync(p.out, postPage(p, posts[i - 1], posts[i + 1])));
+writeFileSync(join(ROOT, 'devlog', 'index.html'), indexPage(posts));
+writeFileSync(join(ROOT, 'devlog', 'feed.xml'), feed(posts));
 
-// Latest three player posts on the home page.
+// Latest three posts on the home page.
 const homePath = join(ROOT, 'index.html');
-const latest = players
+const latest = posts
   .slice(0, 3)
   .map((p) => `\n      <li><a href="${p.url}"><time datetime="${p.date}">${p.dateLabel}</time><span>${esc(p.title)}</span></a></li>`)
   .join('');
@@ -384,11 +358,11 @@ writeFileSync(
 
 // Sitemap lines for the dev log.
 const smPath = join(ROOT, 'sitemap.xml');
-const newest = all[0]?.date ?? '';
+const newest = posts[0]?.date ?? '';
 const smLines = [
   `  <url><loc>${SITE}/devlog/</loc><lastmod>${newest}</lastmod><priority>0.7</priority></url>`,
-  ...all.map((p) => `  <url><loc>${SITE}${p.url}</loc><lastmod>${p.date}</lastmod><priority>${p.kind === 'player' ? '0.6' : '0.4'}</priority></url>`),
+  ...posts.map((p) => `  <url><loc>${SITE}${p.url}</loc><lastmod>${p.date}</lastmod><priority>0.6</priority></url>`),
 ].join('\n');
 writeFileSync(smPath, replaceBetween(readFileSync(smPath, 'utf8'), '<!-- DEVLOG START -->', '<!-- DEVLOG END -->', `\n${smLines}\n  `, 'sitemap.xml'));
 
-console.log(`Dev log built: ${players.length} posts, ${codes.length} behind-the-code notes.`);
+console.log(`Dev log built: ${posts.length} posts.`);
