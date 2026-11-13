@@ -1,6 +1,6 @@
 # Dev Log #16: The Farmers Market Gets Busy
 
-**Sign in with Apple and Google is live.** Last week I told you version 1.1.0 was waiting on review. It went live on Google Play on November 7 and on the App Store on November 10. As of today 1.1.0 is the oldest version that can play, so if your game says "Update required", grab the update from your store and you will be right back on your farm.
+**Sign in with Apple and Google is live.** Last week I told you version 1.1.0 was waiting on review. It went live on Google Play on November 7, and Apple approved it on November 10. As of today 1.1.0 is the oldest version that can play, so if your game says "Update required", grab the update from your store and you will be right back on your farm.
 
 **The bigger news: the new Farmers Market is on for everyone, starting today.** I spent this week turning the market from one button into something you actually run. Here is what you will find.
 
@@ -20,7 +20,7 @@ A few optional extras cost one ad or some coins, like calling back a shopper who
 
 **For new players.** One player opened the game six times and never found the Harvest button, because it sat below the first screen. The Getting Started card now has its own Harvest button, and the Processing Shed opens after your fifth harvest.
 
-**Coming soon: version 1.1.1.** It is in review at both stores now. The game's pictures shrink from about 84 MB to about 17 MB, so the download is much smaller. A brand new install will also wait a few seconds on first launch to pick up the latest update, instead of starting on an older copy. I will tell you here when it is out.
+**Version 1.1.1 is out on Google Play** and still in review on the App Store. The game's pictures shrink from about 84 MB to about 17 MB, so the download is much smaller. A brand new install will also wait a few seconds on first launch to pick up the latest update, instead of starting on an older copy. I will tell you here when it is out on iPhone.
 
 Next week I am mostly watching. This is the first weekend of the new market, so I want to see how it plays for you. If something feels off, tell me.
 
