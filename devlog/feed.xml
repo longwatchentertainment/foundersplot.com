@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Founder's Plot dev log</title>
+  <link>https://www.foundersplot.com/devlog/</link>
+  <description>Weekly notes from the solo developer of Founder's Plot.</description>
+  <language>en-us</language>
+  <item>
+    <title>Dev Log #15: Sign In With Apple And Google Is Out For Review</title>
+    <link>https://www.foundersplot.com/devlog/2026-11-06-sign-in-with-apple-and-google-in-review.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-11-06-sign-in-with-apple-and-google-in-review.html</guid>
+    <pubDate>Fri, 06 Nov 2026 22:00:00 GMT</pubDate>
+    <description>Sign in with Apple and Google is built, tested, and submitted to both stores. Version 1.1.0 is now waiting on approval. Google Play usually goes live on its own once Google signs off. On iPhone I will release it as soon as Apple approves it. I will tell you here when it is live.</description>
+  </item>
+  <item>
+    <title>Dev Log #14: Founder's Plot Is Now Live On Both App Stores</title>
+    <link>https://www.foundersplot.com/devlog/2026-10-30-live-on-both-app-stores.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-10-30-live-on-both-app-stores.html</guid>
+    <pubDate>Fri, 30 Oct 2026 22:00:00 GMT</pubDate>
+    <description>Founder's Plot is now live in both app stores. Last week I told you I was waiting on Apple. That wait ended on October 28, so the game is now on the App Store for iPhone as well as on Google Play for Android. Thank you to everyone who has played so far, and if you were waiting for the iPhone version, it is ready for you.</description>
+  </item>
+  <item>
+    <title>Dev Log #13: Founder's Plot Is Live On Google Play</title>
+    <link>https://www.foundersplot.com/devlog/2026-10-23-live-on-google-play.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-10-23-live-on-google-play.html</guid>
+    <pubDate>Fri, 23 Oct 2026 22:00:00 GMT</pubDate>
+    <description>The big news this week is simple. Founder's Plot went live on Google Play on October 20. I submitted it, Google approved it in about a day, and it rolled out to 177 countries. The first two real players showed up that same day, which means the game now has players that are not me, my test accounts, or an app reviewer. Two people is a tiny number, and I am happy about every one of them.</description>
+  </item>
+  <item>
+    <title>Dev Log #12: Same Clock For Everyone, Words A Player Would Use</title>
+    <link>https://www.foundersplot.com/devlog/2026-10-16-same-clock-for-everyone.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-10-16-same-clock-for-everyone.html</guid>
+    <pubDate>Fri, 16 Oct 2026 22:00:00 GMT</pubDate>
+    <description>Most of this week was me playing the game from the first tap, again, and fixing every spot where it talked like a developer instead of like a person. I also found a bug that made harvesting impossible on a fresh account, which was a good reminder of why I keep restarting from zero.</description>
+  </item>
+  <item>
+    <title>Dev Log #11: Teaching A Stranger How To Run An Orchard</title>
+    <link>https://www.foundersplot.com/devlog/2026-10-09-teaching-a-stranger-to-run-an-orchard.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-10-09-teaching-a-stranger-to-run-an-orchard.html</guid>
+    <pubDate>Fri, 09 Oct 2026 22:00:00 GMT</pubDate>
+    <description>Last week I spent a lot of time tapping through the game to see what I had broken. This week I changed the question. I stopped asking whether the game works and started asking whether someone who has never seen it would know what to do. I reset my account, played it cold with no debug menu, and wrote down every place I got confused. Then I fixed those places. Three rounds of that this week.</description>
+  </item>
+  <item>
+    <title>Dev Log #10: A Second Apple, A Faster Road To Tier 2, And A Lot Of Me Tapping Through The Game On An Emulator</title>
+    <link>https://www.foundersplot.com/devlog/2026-10-02-a-second-apple-and-a-faster-road-to-tier-2.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-10-02-a-second-apple-and-a-faster-road-to-tier-2.html</guid>
+    <pubDate>Fri, 02 Oct 2026 22:00:00 GMT</pubDate>
+    <description>This was the week the game started feeling like a game again after last week's lockdown work. Some of it is new to play, and some of it is me finding out what I broke by tapping through every screen myself.</description>
+  </item>
+  <item>
+    <title>Dev Log #9: How You Could Have Hacked Every Number In This Game (And Now You Can't)</title>
+    <link>https://www.foundersplot.com/devlog/2026-09-25-how-you-could-have-hacked-every-number.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-09-25-how-you-could-have-hacked-every-number.html</guid>
+    <pubDate>Fri, 25 Sep 2026 22:00:00 GMT</pubDate>
+    <description>Short version up front, since it is basically the whole week: nothing new to play this week. Instead I spent it closing a hole that would have let anyone give themselves infinite money, coins, and inventory. Here is what that means and why it ate the entire week.</description>
+  </item>
+  <item>
+    <title>Dev Log #8: The Coins Actually Show Up Now</title>
+    <link>https://www.foundersplot.com/devlog/2026-09-18-the-coins-actually-show-up-now.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-09-18-the-coins-actually-show-up-now.html</guid>
+    <pubDate>Fri, 18 Sep 2026 22:00:00 GMT</pubDate>
+    <description>Last week was all paint. This week went back to the parts of the game that decide whether it's fair.</description>
+  </item>
+  <item>
+    <title>Dev Log #7: Every Screen Got a Real Building</title>
+    <link>https://www.foundersplot.com/devlog/2026-09-11-every-screen-got-a-real-building.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-09-11-every-screen-got-a-real-building.html</guid>
+    <pubDate>Fri, 11 Sep 2026 22:00:00 GMT</pubDate>
+    <description>This week didn't add a single new mechanic. No new recipe, no new upgrade, no new economy lever. Instead I spent the whole week making the game look like the game I actually designed instead of the placeholder shapes and debug menus it's been running on underneath, and I think it was worth it.</description>
+  </item>
+  <item>
+    <title>Dev Log #6: The Debug Screen Finally Let Go</title>
+    <link>https://www.foundersplot.com/devlog/2026-09-04-the-debug-screen-finally-let-go.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-09-04-the-debug-screen-finally-let-go.html</guid>
+    <pubDate>Fri, 04 Sep 2026 22:00:00 GMT</pubDate>
+    <description>Every dev log so far has come with the same asterisk: it works, but you'd never see it, because the whole game has been running through one giant debug menu since the first playable build. That changed this week. There's a real bottom tab bar now, and the Orchard is the first piece to move out of the debug screen into an actual player-facing tab, plots and watering and harvesting and weather and...</description>
+  </item>
+  <item>
+    <title>Dev Log #5: I Finally Played the Market I Built</title>
+    <link>https://www.foundersplot.com/devlog/2026-08-28-i-finally-played-the-market.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-08-28-i-finally-played-the-market.html</guid>
+    <pubDate>Fri, 28 Aug 2026 22:00:00 GMT</pubDate>
+    <description>Last week's post was about all the stuff I bolted onto the farmers market: reputation, loyalty, a wandering food blogger, a wholesale buyer, live weather, competitors. All of it built, none of it tested on an actual phone. This week I fixed that, and playing it taught me a few things the design doc couldn't.</description>
+  </item>
+  <item>
+    <title>Dev Log #4: The Market Learned Some Names</title>
+    <link>https://www.foundersplot.com/devlog/2026-08-21-the-market-learned-some-names.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-08-21-the-market-learned-some-names.html</guid>
+    <pubDate>Fri, 21 Aug 2026 22:00:00 GMT</pubDate>
+    <description>Last time the recipe catalog got finished up and grade started actually mattering on price. This week I went back to a promise from that post: the farmers market getting its full scope back. It's a much bigger, weirder place now.</description>
+  </item>
+  <item>
+    <title>Dev Log #3: A B Apple Is Worth Less Than an A Apple</title>
+    <link>https://www.foundersplot.com/devlog/2026-08-14-a-b-apple-is-worth-less.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-08-14-a-b-apple-is-worth-less.html</guid>
+    <pubDate>Fri, 14 Aug 2026 22:00:00 GMT</pubDate>
+    <description>Last time was about margins, raw apples versus juice. This week was about finishing what that opened up, plus a bunch of less glamorous stuff that had to happen eventually.</description>
+  </item>
+  <item>
+    <title>Dev Log #2: Apples Stop Being Apples</title>
+    <link>https://www.foundersplot.com/devlog/2026-08-07-apples-stop-being-apples.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-08-07-apples-stop-being-apples.html</guid>
+    <pubDate>Fri, 07 Aug 2026 22:00:00 GMT</pubDate>
+    <description>Last time I wrote about paperwork. This time there's actual game to talk about.</description>
+  </item>
+  <item>
+    <title>Dev Log #1: How Long Watch LLC Actually Started</title>
+    <link>https://www.foundersplot.com/devlog/2026-07-31-how-long-watch-llc-started.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-07-31-how-long-watch-llc-started.html</guid>
+    <pubDate>Fri, 31 Jul 2026 22:00:00 GMT</pubDate>
+    <description>Hey, I'm Charles. Solo dev on Founder's Plot, a mobile business sim about starting with one backyard apple tree and building it into a real, vertically integrated food business. I wanted the first thing I ever post here to be honest about where the last couple months actually went, because it wasn't gameplay. It was paperwork.</description>
+  </item>
+</channel>
+</rss>

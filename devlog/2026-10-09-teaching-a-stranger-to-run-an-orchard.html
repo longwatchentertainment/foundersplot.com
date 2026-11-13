@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Last week I spent a lot of time tapping through the game to see what I had broken. This week I changed the question. I stopped asking whether the game...">
+<title>Dev Log #11: Teaching A Stranger How To Run An Orchard | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/2026-10-09-teaching-a-stranger-to-run-an-orchard.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dev Log #11: Teaching A Stranger How To Run An Orchard | Founder's Plot dev log">
+<meta property="og:description" content="Last week I spent a lot of time tapping through the game to see what I had broken. This week I changed the question. I stopped asking whether the game...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/2026-10-09-teaching-a-stranger-to-run-an-orchard.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Log #11: Teaching A Stranger How To Run An Orchard","datePublished":"2026-10-09","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/2026-10-09-teaching-a-stranger-to-run-an-orchard.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/">Dev log</a></p>
+    <h1>Dev Log #11: Teaching A Stranger How To Run An Orchard</h1>
+    <p class="updated"><time datetime="2026-10-09">October 9, 2026</time></p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>Last week I spent a lot of time tapping through the game to see what I had broken. This week I changed the question. I stopped asking whether the game works and started asking whether someone who has never seen it would know what to do. I reset my account, played it cold with no debug menu, and wrote down every place I got confused. Then I fixed those places. Three rounds of that this week.</p>
+<p><strong>There is a Getting Started card now.</strong> It sits at the top of the Orchard and shows one step at a time: harvest, sell, reach the Processing Shed, make your first juice. Finish a step and it pays out a small reward on its own. The point is that nobody should have to guess what comes next in their first hour. There is also a How to Play screen with seven short sections, reachable from the Account tab or the little question mark next to your coins.</p>
+<p><strong>Buttons say why they are greyed out.</strong> Before, a Harvest button you could not press just sat there looking broken. Now it tells you: &quot;Ready in 2h 41m,&quot; &quot;Still growing,&quot; or &quot;Needs care.&quot; Error messages got the same treatment. If the server says no, you get plain words instead of something that sounds like a crash. I also removed the phrase &quot;Tier 2&quot; from everything you read, since nobody should have to learn my internal name for the Processing Shed.</p>
+<p><strong>Selling is much harder to miss.</strong> The Harvested popup now offers Keep or &quot;Sell these,&quot; with the dollar amount on the button. In my third test I noticed it was easy to tap Keep every time and end up with 228 apples, zero dollars, and a card telling me to sell. So during that step the card now has a &quot;Sell all&quot; button right on it.</p>
+<p><strong>The first press is a gift.</strong> In round two I reached the Processing Shed with about $31 and found the first press costs $75. That is a wall right after a door. So now a neighbor hands you their old Garage Sale Press when you unlock the shed. You earned the gate, the gate should not also charge you rent.</p>
+<p><strong>Getting to the shed is faster.</strong> It took me about 19 harvests and 15 ads to get there, which is too long. The Grade A apple goal dropped from 50 to 35, and the next round took about 11 harvests. I also found out why it had been slow: soil wears down after each harvest, and worn soil gives fewer Grade A apples. The tree card now flags low soil in red and points you to Compost.</p>
+<p><strong>Waiting got friendlier.</strong> Your tree cooldown now says &quot;We'll notify you when it's ready,&quot; or gives you a button to turn notifications on, because brand new players never plant a tree and never saw the permission ask.</p>
+<p><strong>Boring but required.</strong> The sign up screen links to the Privacy Policy and Terms, the Account tab links to Support, and you can delete your account from inside the app. Apple and Google both insist on that last one, and I agree with them.</p>
+<p>Still all emulator testing. Real people are next, and I expect them to find things I walked right past.</p>
+<p>Charles</p>
+    </article>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/2026-10-16-same-clock-for-everyone.html">&larr; Newer: Dev Log #12: Same Clock For Everyone, Words A Player Would Use</a><a class="devlog-older" href="/devlog/2026-10-02-a-second-apple-and-a-faster-road-to-tier-2.html">Older: Dev Log #10: A Second Apple, A Faster Road To Tier 2, And A Lot Of Me Tapping Through The Game On An Emulator &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Dev Log #5: I Finally Played the Market I Built
+
+Last week's post was about all the stuff I bolted onto the farmers market: reputation, loyalty, a wandering food blogger, a wholesale buyer, live weather, competitors. All of it built, none of it tested on an actual phone. This week I fixed that, and playing it taught me a few things the design doc couldn't.
+
+The first thing I noticed had nothing to do with game design and everything to do with the app just feeling broken. I'd tap "fetch this weekend's real weather" and the screen would sit there showing the old weather until something else happened to refresh it, like making a sale. Same story tapping the little checkmark/no-entry buttons that let you exclude a grade of apple from what you bring to market: tap it, nothing visibly changes, tap again a second later and suddenly both taps register at once. It felt laggy and unresponsive in a way that would've made me assume the game was broken if I hadn't built it myself. Turned out both bugs had the same cause: those bits of the screen just weren't listening for the data that changed, so they didn't know to redraw until something unrelated came along and dragged them along for the ride. Once I saw the pattern in the first bug, the second one took minutes to find and fix instead of another confused testing session.
+
+The other thing I wanted while playing: some idea of WHY a sale earned what it earned. Right now selling at the market is one tap that resolves your whole inventory against the day's conditions, and until this week that just spit out a dollar total with no explanation. I wanted to see it broken down: base price, your reputation bonus, your loyalty bonus, whether demand was up or down that day, whether the weather helped or hurt, whether a blogger review was still boosting you. So now the recap tells you exactly which of those factors moved the needle and by how much, and skips the ones that didn't do anything that day. It's still a plain popup for now rather than a proper screen, but it already makes the market feel less like a black box and more like a system you can actually learn to play.
+
+I also caught a small but embarrassing one while building that: a weak-demand day was showing the same "up and to the right" arrow as a strong one. Looked like the game was congratulating you for a bad market day. Fixed.
+
+None of this is glamorous. It's the unglamorous week where you finally poke at what you built and it pokes back. But it's also the week that actually tells you whether the thing you shipped feels good to touch, not just whether it typechecks. Next up: catching up the rest of the on-device testing backlog before I let myself build anything new.
+
+Charles

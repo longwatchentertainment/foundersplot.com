@@ -1,0 +1,37 @@
+/* Dev log pages (devlog/), built by scripts/build-devlog.mjs. Uses the colors
+   and type from content.css / refinements.css. */
+
+.page-header .eyebrow a{color:inherit;border-bottom:none}
+.page-header .updated a{color:var(--forest);border-bottom:1px solid var(--gold-dim)}
+
+/* A single post */
+.devlog-post{padding-bottom:12px}
+.devlog-post p{margin-bottom:18px}
+.devlog-post p strong{color:var(--ink)}
+.devlog-post h2,.devlog-post h3,.devlog-post h4{margin:28px 0 12px;color:var(--ink)}
+.devlog-post ul,.devlog-post ol{margin:0 0 18px 22px}
+.devlog-post li{font-size:15.5px;color:var(--ink-muted);line-height:1.75;margin-bottom:6px}
+.devlog-post blockquote{margin:0 0 18px;padding:4px 0 4px 18px;border-left:3px solid var(--gold-dim)}
+.devlog-post code{font-size:.9em;background:var(--paper-dim);padding:1px 5px;border-radius:4px;word-break:break-word}
+.devlog-post hr{border:none;border-top:1px solid var(--rule);margin:28px 0}
+
+.devlog-pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:30px;padding-top:22px;border-top:1px solid var(--rule)}
+.devlog-pager a{font-size:14.5px;max-width:48%}
+.devlog-pager .devlog-older{margin-left:auto;text-align:right}
+.devlog-back{margin-top:22px}
+
+/* The list of posts */
+.devlog-list ul{list-style:none;margin:0;padding:0}
+.devlog-item{padding:24px 0;border-bottom:1px solid var(--rule)}
+.devlog-item:first-child{padding-top:0}
+.devlog-item:last-child{border-bottom:none}
+.devlog-item time,.devlog-latest time{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--gold-deep);margin-bottom:6px}
+.devlog-item h3{font-size:1.2rem;line-height:1.35;margin-bottom:8px}
+.devlog-item h3 a{border-bottom:none;color:var(--ink)}
+.devlog-item h3 a:hover{color:var(--forest)}
+.devlog-item p{font-size:15px}
+
+@media(max-width:600px){
+  .devlog-pager a{max-width:100%}
+  .devlog-pager .devlog-older{margin-left:0;text-align:left}
+}

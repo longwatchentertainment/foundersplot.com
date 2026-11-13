@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Built by scripts/build-devlog.mjs from devlog/posts. Edit the .md file, not this page. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="This was the week the game started feeling like a game again after last week's lockdown work. Some of it is new to play, and some of it is me finding out...">
+<title>Dev Log #10: A Second Apple, A Faster Road To Tier 2, And A Lot Of Me Tapping Through The Game On An Emulator | Founder's Plot dev log</title>
+<link rel="canonical" href="https://www.foundersplot.com/devlog/2026-10-02-a-second-apple-and-a-faster-road-to-tier-2.html">
+<link rel="icon" href="/assets/img/icon.png">
+<link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dev Log #10: A Second Apple, A Faster Road To Tier 2, And A Lot Of Me Tapping Through The Game On An Emulator | Founder's Plot dev log">
+<meta property="og:description" content="This was the week the game started feeling like a game again after last week's lockdown work. Some of it is new to play, and some of it is me finding out...">
+<meta property="og:url" content="https://www.foundersplot.com/devlog/2026-10-02-a-second-apple-and-a-faster-road-to-tier-2.html">
+<meta property="og:image" content="https://www.foundersplot.com/assets/img/share.png">
+<link rel="stylesheet" href="/assets/css/refinements.css">
+<link rel="stylesheet" href="/assets/css/content.css">
+<link rel="stylesheet" href="/assets/css/devlog.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dev Log #10: A Second Apple, A Faster Road To Tier 2, And A Lot Of Me Tapping Through The Game On An Emulator","datePublished":"2026-10-02","author":{"@type":"Person","name":"Charles Johnson"},"publisher":{"@type":"Organization","name":"Long Watch LLC"},"mainEntityOfPage":"https://www.foundersplot.com/devlog/2026-10-02-a-second-apple-and-a-faster-road-to-tier-2.html","image":"https://www.foundersplot.com/assets/img/share.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="wordmark" href="/">Founder's Plot<span class="brand-leaf" aria-hidden="true">&#10087;</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/#about">The game</a>
+    <a href="/#journey">Your journey</a>
+    <a href="/devlog/">Dev log</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+  </nav>
+  <a class="button small gold" href="/#download">Get the game</a>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="eyebrow"><a href="/devlog/">Dev log</a></p>
+    <h1>Dev Log #10: A Second Apple, A Faster Road To Tier 2, And A Lot Of Me Tapping Through The Game On An Emulator</h1>
+    <p class="updated"><time datetime="2026-10-02">October 2, 2026</time></p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-inner">
+    <article class="card devlog-post">
+<p>This was the week the game started feeling like a game again after last week's lockdown work. Some of it is new to play, and some of it is me finding out what I broke by tapping through every screen myself.</p>
+<p><strong>Honeycrisp is in.</strong> Fuji has been the only tree you could plant, and the story beats have been talking about a cutting offer for ages with nothing behind it. Now there is a real second variety. After your 11th harvest, Honeycrisp unlocks on its own. You do not have to find a menu or pay for it, it just shows up as a choice the next time you plant in an empty plot. It costs $5 to plant and gives 18 apples per harvest instead of Fuji's 12, but it takes 4 days between harvests instead of 3. That works out to a modest edge per day, not a strict upgrade, and I did that on purpose. I did not want Honeycrisp to make Fuji pointless. Now you are actually choosing.</p>
+<p><strong>Getting to Tier 2 is faster.</strong> The Processing Shed used to ask for 100 Grade A apples and $60 in lifetime revenue. It now asks for 50 apples and $30. I lowered it because I did not want the early game to turn into a grind, and honestly because I tried it myself and it felt slow. I also raised the watch an ad to skip a harvest cooldown to 3 hours, so ads feel like a real shortcut instead of a nag. I want you to reach Processing because you are enjoying the orchard, not because you got worn down by it. I may tune these numbers again once other people play.</p>
+<p><strong>The weather card finally tells you the whole story.</strong> Before, a frost or hail event would pop up, you would answer it, and then the Orchard screen went back to &quot;Clear skies&quot; like nothing happened. Now the card shows what the event actually did to you, like a yield penalty or guaranteed Grade A harvests, and it remembers the last event and how you handled it, for example &quot;Last event: Frost Warning, you protected against it.&quot; I also fixed a nasty one I found while testing. Closing a bad weather pop up with the X used to quietly count as accepting the damage. A Frost Warning cost me 20 percent of a harvest just because I dismissed a window. Closing it now leaves the decision open on the card until you choose or it expires.</p>
+<p><strong>The first screen looks like a real first impression.</strong> I redesigned the welcome and sign in screen, reusing the Orchard hero art, and spent far too long going back and forth on the title font. It is Playfair Display now, and yes, I changed it more times than I want to admit.</p>
+<p><strong>Smaller stuff.</strong> All 16 starter and mid tier equipment images got recut because pieces of neighboring images were bleeding into them. Equipment shelf cards are tappable to buy or upgrade. The Orchard boost buttons moved under the Weather card, and the &quot;Watch Ad&quot; text became a little icon. Processing timers now tick properly and use the server's clock, after a batch I skipped sat on &quot;1 min left&quot; for four minutes.</p>
+<p><strong>Bugs I found and fixed.</strong> Chopping a tree and then replanting failed. Honeycrisp did not unlock for existing players because their old harvest count never carried over. Upgrading equipment did not show the install countdown. A fresh account could not use its free label color. One story beat told you the Processing Shed was ready when you were still at 43 of 50 apples. All fixed, all found by actually playing.</p>
+<p>Next week is more of the same, playing the game as a stranger would, then clearing the last of the debug buttons so I can let real people in.</p>
+<p>Charles</p>
+    </article>
+    <nav class="devlog-pager" aria-label="More posts"><a class="devlog-newer" href="/devlog/2026-10-09-teaching-a-stranger-to-run-an-orchard.html">&larr; Newer: Dev Log #11: Teaching A Stranger How To Run An Orchard</a><a class="devlog-older" href="/devlog/2026-09-25-how-you-could-have-hacked-every-number.html">Older: Dev Log #9: How You Could Have Hacked Every Number In This Game (And Now You Can't) &rarr;</a></nav>
+    <p class="devlog-back"><a href="/devlog/">All dev log posts</a></p>
+  </div>
+</div>
+</main>
+
+<footer>
+  <a class="wordmark" href="/">Founder's Plot</a>
+  <p>&copy; 2026 Long Watch LLC &middot; Kansas</p>
+  <div>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/press.html">Press</a>
+    <a href="/devlog/">Dev log</a>
+  </div>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "995e2e1098e746f1bab699c5ea7b5f7f"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
