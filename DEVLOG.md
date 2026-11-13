@@ -4,7 +4,7 @@ The dev log lives at https://www.foundersplot.com/devlog/. Nothing goes live unt
 
 ## Each Friday
 
-1. The Friday routine writes the week's post as markdown on a new branch and opens a pull request titled "Dev log: (date)".
+1. The Friday routine writes the week's post as markdown and commits it on a new branch on Charles's PC (the PC can't push to GitHub). Charles's main Claude session checks every claim, pushes the branch and opens a pull request titled "Dev log: (date)".
 2. Charles reads it on GitHub. Open the pull request, then "Files changed", then the `.md` file and "View file" to read it formatted.
 3. To fix wording, edit the `.md` file right there (the pencil icon) and commit to the same branch. A GitHub Action rebuilds the pages in the pull request within a minute.
 4. **Merge = publish.** GitHub Pages puts it live about a minute after the merge. **Close the pull request = nothing goes live.**
