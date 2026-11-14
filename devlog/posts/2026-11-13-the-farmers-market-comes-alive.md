@@ -20,6 +20,6 @@ A few optional extras cost one ad or some coins, like calling back a shopper who
 
 **Version 1.1.1 is live on Google Play and in review on the App Store.** Sign in with Apple and Google (1.1.0) is now out on both stores. 1.1.1 shrinks the game's pictures from about 84 MB to about 17 MB. A brand new install now waits a few seconds on first launch so it starts on the latest update. You need 1.1.0 or newer to play now, so if the game asks you to update, that is why.
 
-**What I am watching.** This weekend is the first real test of the new market. After Sunday I will check whether you used it, whether sales look normal, and whether anything broke. If a deal felt unfair or something confused you, tell me. That helps more than anything.
+**What's next.** This is the first weekend with the whole new market running, and I can't wait to see how it plays. Next week I'll look back at how the weekend went and tune anything that needs it. If a deal felt unfair or something was confusing, let me know. Your feedback helps more than anything.
 
 Charles
