@@ -6,6 +6,13 @@
   <description>Weekly notes from the solo developer of Founder's Plot.</description>
   <language>en-us</language>
   <item>
+    <title>Dev Log #16: The Farmers Market Comes Alive</title>
+    <link>https://www.foundersplot.com/devlog/2026-11-13-the-farmers-market-comes-alive.html</link>
+    <guid>https://www.foundersplot.com/devlog/2026-11-13-the-farmers-market-comes-alive.html</guid>
+    <pubDate>Fri, 13 Nov 2026 22:00:00 GMT</pubDate>
+    <description>The new Farmers Market is on for everyone, starting this weekend. A player told me last Saturday they expected the market to be more interactive. A market day used to be one tap of &quot;Collect Today's Sales&quot;. I spent this week rebuilding it, and it went live for every player today.</description>
+  </item>
+  <item>
     <title>Dev Log #15: Sign In With Apple And Google Is Out For Review</title>
     <link>https://www.foundersplot.com/devlog/2026-11-06-sign-in-with-apple-and-google-in-review.html</link>
     <guid>https://www.foundersplot.com/devlog/2026-11-06-sign-in-with-apple-and-google-in-review.html</guid>
