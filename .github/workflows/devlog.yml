@@ -1,0 +1,40 @@
+# Rebuilds the dev log pages inside a pull request, so an edit made to a post's
+# .md file on GitHub (for example while reviewing the Friday draft) is in the
+# pages that go live when the pull request is merged. Merging is the approval:
+# GitHub Pages publishes main as before.
+name: Dev log pages
+
+on:
+  pull_request:
+    paths:
+      - 'devlog/posts/**'
+      - 'scripts/build-devlog.mjs'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    # Only for branches in this repository (a fork's branch cannot be written to).
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build the dev log pages
+        run: node scripts/build-devlog.mjs
+      - name: Save the rebuilt pages to this pull request
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A devlog index.html sitemap.xml
+            git commit -m "Rebuild dev log pages"
+            git push
+          else
+            echo "Pages already up to date."
+          fi
