@@ -44,3 +44,5 @@
 .lead-note{font-size:16px;color:#e1dac6;margin:-14px 0 26px!important;max-width:520px}.hero-note{font-size:14px;color:#d9d2bd;margin-top:10px!important;max-width:520px}@media(max-width:600px){.lead-note{font-size:15px}.hero-note{font-size:13px}}
 /* 2026-11-20: real gameplay screenshots under the pillars (HeyCatch audit D1.5) */
 .shots{max-width:1250px;margin:70px auto 0;text-align:center}.shots-row{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.shots figure{margin:0}.shots img{width:100%;height:auto;border-radius:22px;border:6px solid #203328;box-shadow:0 14px 28px #493b2433}.shots figcaption{margin-top:14px;font-size:15px;color:#5a685a}@media(max-width:850px){.shots-row{grid-template-columns:repeat(2,1fr);gap:22px}}@media(max-width:600px){.shots{margin-top:55px}.shots-row{gap:14px}.shots img{border-width:4px;border-radius:16px}.shots figcaption{font-size:13px}}
+/* 2026-11-20: dev log link in the hero (HeyCatch audit D2.2); images must keep their layout size now that they carry width and height */
+.hero-link{margin-top:18px;font-size:14px;border-bottom-color:#e5d5ab88}.product-scene img{height:auto}

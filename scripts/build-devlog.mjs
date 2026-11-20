@@ -204,7 +204,7 @@ ${GENERATED}
 <meta name="description" content="${esc(description)}">
 <title>${esc(title)}</title>
 <link rel="canonical" href="${SITE}${canonical}">
-<link rel="icon" href="/assets/img/icon.png">
+<link rel="icon" href="/assets/img/icon-192.png">
 <link rel="alternate" type="application/rss+xml" title="Founder's Plot dev log" href="/devlog/feed.xml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="${esc(title)}">
