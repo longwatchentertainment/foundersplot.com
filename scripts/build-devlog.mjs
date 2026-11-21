@@ -248,8 +248,9 @@ function postPage(p, newer, older) {
     '@type': 'BlogPosting',
     headline: p.title,
     datePublished: p.date,
-    author: { '@type': 'Person', name: 'Charles Johnson' },
-    publisher: { '@type': 'Organization', name: 'Long Watch LLC' },
+    // Long Watch LLC, never a person's name (Charles, 2026-11-20: corporate veil).
+    author: { '@type': 'Organization', name: 'Long Watch LLC', url: 'https://longwatchentertainment.com/' },
+    publisher: { '@type': 'Organization', name: 'Long Watch LLC', url: 'https://longwatchentertainment.com/' },
     mainEntityOfPage: `${SITE}${p.url}`,
     image: `${SITE}/assets/img/share.png`,
   };
@@ -258,13 +259,14 @@ function postPage(p, newer, older) {
     older ? `<a class="devlog-older" href="${older.url}">Older: ${esc(older.title)} &rarr;</a>` : '',
   ].join('');
   return page({
-    title: `${p.title} | Founder's Plot dev log`,
+    // 30 to 60 characters reads best in search results (HeyCatch SEO audit, 2026-11-20).
+    title: `${p.title} | Founder's Plot`.length <= 60 ? `${p.title} | Founder's Plot` : p.title,
     description: excerpt(p.body, 155),
     canonical: p.url,
     head: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n`,
     eyebrow: '<a href="/devlog/">Dev log</a>',
     h1: esc(p.title),
-    sub: `<time datetime="${p.date}">${p.dateLabel}</time>`,
+    sub: `<time datetime="${p.date}">${p.dateLabel}</time> &middot; By Long Watch LLC`,
     content: `    <article class="card devlog-post">
 ${markdownToHtml(p.body)}
     </article>
@@ -283,12 +285,13 @@ function listItem(p) {
 
 function indexPage(posts) {
   return page({
-    title: "Dev log | Founder's Plot",
+    title: "Founder's Plot Dev Log: Weekly Game Updates",
     description: "Weekly notes from the solo developer of Founder's Plot: what changed in the game, why, and what is coming next.",
     canonical: '/devlog/',
     eyebrow: 'Dev log',
     h1: 'Follow the build',
-    sub: 'Founder\'s Plot is made by one developer in Kansas. A new post goes up most Fridays. <a href="/devlog/feed.xml">RSS feed</a>',
+    // Answer first, in self-contained words (HeyCatch SEO audit, 2026-11-20).
+    sub: 'The Founder\'s Plot dev log is a weekly update on Founder\'s Plot: Orchard Tycoon, a free orchard business game for iPhone and Android made by Long Watch LLC, a one-person studio in Kansas. Most Fridays a new post covers what changed in the game that week, why it changed, and what is coming next. <a href="/devlog/feed.xml">RSS feed</a>',
     content: `    <section class="devlog-list" aria-label="Dev log posts">
       <ul>
 ${posts.map(listItem).join('\n')}
